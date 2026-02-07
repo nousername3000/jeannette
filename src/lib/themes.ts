@@ -2,6 +2,7 @@ export type CardStyle = "bordered" | "elevated" | "glass" | "flat";
 export type ImageStyle = "rounded" | "square" | "circle";
 export type ButtonStyle = "solid" | "pill" | "soft";
 export type SectionSpacing = "compact" | "comfortable" | "spacious";
+export type HeroStyle = "image" | "animated" | "gradient";
 
 export interface ThemePreset {
   id: string;
@@ -13,6 +14,7 @@ export interface ThemePreset {
   imageStyle: ImageStyle;
   buttonStyle: ButtonStyle;
   sectionSpacing: SectionSpacing;
+  heroStyle: HeroStyle;
 }
 
 export const themes: ThemePreset[] = [
@@ -23,6 +25,7 @@ export const themes: ThemePreset[] = [
     emoji: "🍂",
     cardStyle: "bordered",
     imageStyle: "rounded",
+    heroStyle: "image",
     buttonStyle: "solid",
     sectionSpacing: "comfortable",
     variables: {
@@ -56,6 +59,7 @@ export const themes: ThemePreset[] = [
     emoji: "❄️",
     cardStyle: "elevated",
     imageStyle: "square",
+    heroStyle: "gradient",
     buttonStyle: "pill",
     sectionSpacing: "comfortable",
     variables: {
@@ -89,6 +93,7 @@ export const themes: ThemePreset[] = [
     emoji: "✨",
     cardStyle: "glass",
     imageStyle: "circle",
+    heroStyle: "animated",
     buttonStyle: "soft",
     sectionSpacing: "spacious",
     variables: {
