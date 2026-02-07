@@ -1,5 +1,7 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 import { themes, ThemePreset, CardStyle, ImageStyle, ButtonStyle, SectionSpacing, HeroStyle } from "@/lib/themes";
+import { fontPairings, FontPairing } from "@/lib/fontPairings";
+import { colorSchemes, ColorScheme } from "@/lib/colorSchemes";
 
 interface StyleOverrides {
   cardStyle?: CardStyle;
@@ -20,6 +22,12 @@ interface ThemeContextValue {
   heroStyle: HeroStyle;
   overrides: StyleOverrides;
   setOverrides: (o: StyleOverrides) => void;
+  fontPairingId: string;
+  setFontPairingId: (id: string) => void;
+  fontPairing: FontPairing;
+  colorSchemeId: string;
+  setColorSchemeId: (id: string) => void;
+  colorScheme: ColorScheme;
 }
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
@@ -27,17 +35,50 @@ const ThemeContext = createContext<ThemeContextValue | null>(null);
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [themeId, setThemeIdState] = useState("warm");
   const [overrides, setOverrides] = useState<StyleOverrides>({});
+  const [fontPairingId, setFontPairingId] = useState("playfair-dm");
+  const [colorSchemeId, setColorSchemeId] = useState("terracotta");
   const theme = themes.find((t) => t.id === themeId) ?? themes[0];
+  const fontPairing = fontPairings.find((f) => f.id === fontPairingId) ?? fontPairings[0];
+  const colorScheme = colorSchemes.find((c) => c.id === colorSchemeId) ?? colorSchemes[0];
 
   const setThemeId = (id: string) => {
     setThemeIdState(id);
     setOverrides({});
+    // Map preset to matching color scheme & font
+    const t = themes.find((t) => t.id === id);
+    if (t) {
+      if (id === "warm") { setColorSchemeId("terracotta"); setFontPairingId("playfair-dm"); }
+      else if (id === "clean") { setColorSchemeId("ocean"); setFontPairingId("inter-inter"); }
+      else if (id === "luxe") { setColorSchemeId("navy-gold"); setFontPairingId("cormorant-montserrat"); }
+    }
   };
 
+  // Apply color scheme variables
   useEffect(() => {
     const root = document.documentElement;
-    Object.entries(theme.variables).forEach(([key, value]) => {
+    Object.entries(colorScheme.variables).forEach(([key, value]) => {
       root.style.setProperty(key, value);
+    });
+  }, [colorScheme]);
+
+  // Apply font pairing variables
+  useEffect(() => {
+    const root = document.documentElement;
+    root.style.setProperty("--font-display", fontPairing.display);
+    root.style.setProperty("--font-body", fontPairing.body);
+  }, [fontPairing]);
+
+  // Apply non-color, non-font theme variables (radius etc.)
+  useEffect(() => {
+    const root = document.documentElement;
+    const skip = ["--font-display", "--font-body", "--shadow-sm", "--shadow-md", "--shadow-lg",
+      "--background", "--foreground", "--primary", "--primary-foreground", "--secondary",
+      "--secondary-foreground", "--accent", "--accent-foreground", "--muted", "--muted-foreground",
+      "--card", "--card-foreground", "--border", "--input", "--ring"];
+    Object.entries(theme.variables).forEach(([key, value]) => {
+      if (!skip.includes(key)) {
+        root.style.setProperty(key, value);
+      }
     });
   }, [theme]);
 
@@ -49,7 +90,13 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   return (
     <ThemeContext.Provider
-      value={{ themeId, setThemeId, theme, cardStyle, imageStyle, buttonStyle, sectionSpacing, heroStyle, overrides, setOverrides }}
+      value={{
+        themeId, setThemeId, theme,
+        cardStyle, imageStyle, buttonStyle, sectionSpacing, heroStyle,
+        overrides, setOverrides,
+        fontPairingId, setFontPairingId, fontPairing,
+        colorSchemeId, setColorSchemeId, colorScheme,
+      }}
     >
       {children}
     </ThemeContext.Provider>
