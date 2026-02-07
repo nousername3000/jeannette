@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
-import { themes, ThemePreset, CardStyle, ImageStyle, ButtonStyle, SectionSpacing, HeroStyle, GalleryStyle } from "@/lib/themes";
+import { themes, ThemePreset, CardStyle, ImageStyle, ButtonStyle, SectionSpacing, HeroStyle, GalleryStyle, ServicesStyle } from "@/lib/themes";
 import { fontPairings, FontPairing } from "@/lib/fontPairings";
 import { colorSchemes, ColorScheme } from "@/lib/colorSchemes";
 
@@ -10,6 +10,7 @@ interface StyleOverrides {
   sectionSpacing?: SectionSpacing;
   heroStyle?: HeroStyle;
   galleryStyle?: GalleryStyle;
+  servicesStyle?: ServicesStyle;
 }
 
 interface ThemeContextValue {
@@ -22,6 +23,7 @@ interface ThemeContextValue {
   sectionSpacing: SectionSpacing;
   heroStyle: HeroStyle;
   galleryStyle: GalleryStyle;
+  servicesStyle: ServicesStyle;
   overrides: StyleOverrides;
   setOverrides: (o: StyleOverrides) => void;
   fontPairingId: string;
@@ -90,12 +92,13 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const sectionSpacing = overrides.sectionSpacing ?? theme.sectionSpacing;
   const heroStyle = overrides.heroStyle ?? theme.heroStyle;
   const galleryStyle = overrides.galleryStyle ?? theme.galleryStyle;
+  const servicesStyle = overrides.servicesStyle ?? theme.servicesStyle;
 
   return (
     <ThemeContext.Provider
       value={{
         themeId, setThemeId, theme,
-        cardStyle, imageStyle, buttonStyle, sectionSpacing, heroStyle, galleryStyle,
+        cardStyle, imageStyle, buttonStyle, sectionSpacing, heroStyle, galleryStyle, servicesStyle,
         overrides, setOverrides,
         fontPairingId, setFontPairingId, fontPairing,
         colorSchemeId, setColorSchemeId, colorScheme,

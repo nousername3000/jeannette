@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Palette, X } from "lucide-react";
-import { themes, CardStyle, ImageStyle, ButtonStyle, SectionSpacing, HeroStyle, GalleryStyle } from "@/lib/themes";
+import { themes, CardStyle, ImageStyle, ButtonStyle, SectionSpacing, HeroStyle, GalleryStyle, ServicesStyle } from "@/lib/themes";
 import { fontPairings } from "@/lib/fontPairings";
 import { colorSchemes } from "@/lib/colorSchemes";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -39,6 +39,11 @@ const heroOptions: { value: HeroStyle; label: string }[] = [
 const galleryOptions: { value: GalleryStyle; label: string }[] = [
   { value: "masonry", label: "Masonry" },
   { value: "grid", label: "Uniform" },
+];
+
+const servicesOptions: { value: ServicesStyle; label: string }[] = [
+  { value: "icons-only", label: "Icons Only" },
+  { value: "with-images", label: "With Images" },
 ];
 
 function StyleRow<T extends string>({
@@ -89,7 +94,7 @@ export function ThemeSwitcher() {
   const [open, setOpen] = useState(false);
   const {
     themeId, setThemeId,
-    cardStyle, imageStyle, buttonStyle, sectionSpacing, heroStyle, galleryStyle,
+    cardStyle, imageStyle, buttonStyle, sectionSpacing, heroStyle, galleryStyle, servicesStyle,
     overrides, setOverrides,
     fontPairingId, setFontPairingId,
     colorSchemeId, setColorSchemeId,
@@ -241,6 +246,12 @@ export function ThemeSwitcher() {
               options={galleryOptions}
               value={galleryStyle}
               onChange={(v) => setOverrides({ ...overrides, galleryStyle: v })}
+            />
+            <StyleRow
+              label="Services"
+              options={servicesOptions}
+              value={servicesStyle}
+              onChange={(v) => setOverrides({ ...overrides, servicesStyle: v })}
             />
           </div>
         </div>
