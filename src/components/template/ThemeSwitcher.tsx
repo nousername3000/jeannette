@@ -42,6 +42,7 @@ const heroLayoutOptions: { value: HeroLayout; label: string }[] = [
   { value: "split", label: "Split" },
   { value: "minimal", label: "Minimal" },
   { value: "bold", label: "Bold" },
+  { value: "compact", label: "Compact" },
 ];
 
 const galleryOptions: { value: GalleryStyle; label: string }[] = [
