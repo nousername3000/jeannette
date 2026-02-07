@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Palette, X } from "lucide-react";
-import { themes, CardStyle, ImageStyle, ButtonStyle, SectionSpacing } from "@/lib/themes";
+import { themes, CardStyle, ImageStyle, ButtonStyle, SectionSpacing, HeroStyle } from "@/lib/themes";
 import { useTheme } from "@/contexts/ThemeContext";
 
 const cardOptions: { value: CardStyle; label: string }[] = [
@@ -26,6 +26,12 @@ const spacingOptions: { value: SectionSpacing; label: string }[] = [
   { value: "compact", label: "Compact" },
   { value: "comfortable", label: "Comfortable" },
   { value: "spacious", label: "Spacious" },
+];
+
+const heroOptions: { value: HeroStyle; label: string }[] = [
+  { value: "image", label: "Photo" },
+  { value: "animated", label: "Animated" },
+  { value: "gradient", label: "Gradient" },
 ];
 
 function StyleRow<T extends string>({
@@ -65,7 +71,7 @@ function StyleRow<T extends string>({
 
 export function ThemeSwitcher() {
   const [open, setOpen] = useState(false);
-  const { themeId, setThemeId, cardStyle, imageStyle, buttonStyle, sectionSpacing, overrides, setOverrides } = useTheme();
+  const { themeId, setThemeId, cardStyle, imageStyle, buttonStyle, sectionSpacing, heroStyle, overrides, setOverrides } = useTheme();
 
   return (
     <div className="fixed bottom-6 right-6 z-[100]">
@@ -108,6 +114,12 @@ export function ThemeSwitcher() {
 
           {/* Style overrides */}
           <div className="space-y-3">
+            <StyleRow
+              label="Hero"
+              options={heroOptions}
+              value={heroStyle}
+              onChange={(v) => setOverrides({ ...overrides, heroStyle: v })}
+            />
             <StyleRow
               label="Cards"
               options={cardOptions}

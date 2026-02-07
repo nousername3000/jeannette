@@ -1,11 +1,12 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
-import { themes, ThemePreset, CardStyle, ImageStyle, ButtonStyle, SectionSpacing } from "@/lib/themes";
+import { themes, ThemePreset, CardStyle, ImageStyle, ButtonStyle, SectionSpacing, HeroStyle } from "@/lib/themes";
 
 interface StyleOverrides {
   cardStyle?: CardStyle;
   imageStyle?: ImageStyle;
   buttonStyle?: ButtonStyle;
   sectionSpacing?: SectionSpacing;
+  heroStyle?: HeroStyle;
 }
 
 interface ThemeContextValue {
@@ -16,6 +17,7 @@ interface ThemeContextValue {
   imageStyle: ImageStyle;
   buttonStyle: ButtonStyle;
   sectionSpacing: SectionSpacing;
+  heroStyle: HeroStyle;
   overrides: StyleOverrides;
   setOverrides: (o: StyleOverrides) => void;
 }
@@ -29,7 +31,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   const setThemeId = (id: string) => {
     setThemeIdState(id);
-    setOverrides({}); // reset overrides when switching presets
+    setOverrides({});
   };
 
   useEffect(() => {
@@ -43,10 +45,11 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const imageStyle = overrides.imageStyle ?? theme.imageStyle;
   const buttonStyle = overrides.buttonStyle ?? theme.buttonStyle;
   const sectionSpacing = overrides.sectionSpacing ?? theme.sectionSpacing;
+  const heroStyle = overrides.heroStyle ?? theme.heroStyle;
 
   return (
     <ThemeContext.Provider
-      value={{ themeId, setThemeId, theme, cardStyle, imageStyle, buttonStyle, sectionSpacing, overrides, setOverrides }}
+      value={{ themeId, setThemeId, theme, cardStyle, imageStyle, buttonStyle, sectionSpacing, heroStyle, overrides, setOverrides }}
     >
       {children}
     </ThemeContext.Provider>
