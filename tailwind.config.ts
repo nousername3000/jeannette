@@ -96,6 +96,10 @@ export default {
           "33%": { transform: "translate(40px, -50px) scale(1.1)" },
           "66%": { transform: "translate(-30px, 40px) scale(0.9)" },
         },
+        "logo-scroll": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -104,6 +108,7 @@ export default {
         "hero-orb-1": "hero-orb-1 20s ease-in-out infinite",
         "hero-orb-2": "hero-orb-2 25s ease-in-out infinite",
         "hero-orb-3": "hero-orb-3 18s ease-in-out infinite",
+        "logo-scroll": "logo-scroll 30s linear infinite",
       },
     },
   },

@@ -2,6 +2,7 @@ import { Navbar } from "@/components/template/Navbar";
 import { Hero } from "@/components/template/Hero";
 import { About } from "@/components/template/About";
 import { Services } from "@/components/template/Services";
+import { LogoTicker } from "@/components/template/LogoTicker";
 import { Process } from "@/components/template/Process";
 import { ParallaxBand } from "@/components/template/ParallaxBand";
 import { Testimonials } from "@/components/template/Testimonials";
@@ -19,6 +20,7 @@ const Index = () => {
       <Hero />
       <About />
       <Services />
+      <LogoTicker />
       <Process />
       <ParallaxBand />
       <Testimonials />
