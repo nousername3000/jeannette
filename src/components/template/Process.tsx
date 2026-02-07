@@ -30,13 +30,13 @@ const steps = [
 ];
 
 export function Process() {
-  const { ref, isVisible } = useScrollReveal();
+  const { ref } = useScrollReveal();
   const { sectionSpacing } = useTheme();
 
   return (
     <section id="process" className={`${getSectionPadding(sectionSpacing)} bg-muted/40`}>
       <div ref={ref} className="mx-auto max-w-6xl px-6">
-        <div className={`text-center mb-16 reveal ${isVisible ? "visible" : ""}`}>
+        <div className={`text-center mb-16 reveal`}>
           <p className="text-sm font-medium uppercase tracking-[0.15em] text-primary mb-3">
             How It Works
           </p>
@@ -53,7 +53,7 @@ export function Process() {
           {steps.map((step, i) => (
             <div
               key={step.number}
-              className={`relative reveal ${isVisible ? "visible" : ""} reveal-delay-${i + 1}`}
+              className={`relative reveal reveal-delay-${i + 1}`}
             >
               <span className="font-display text-5xl font-bold text-primary/15">
                 {step.number}

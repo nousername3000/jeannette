@@ -43,13 +43,13 @@ const services = [
 ];
 
 export function Services() {
-  const { ref, isVisible } = useScrollReveal();
+  const { ref } = useScrollReveal();
   const { cardStyle, sectionSpacing } = useTheme();
 
   return (
     <section id="services" className={getSectionPadding(sectionSpacing)}>
       <div ref={ref} className="mx-auto max-w-6xl px-6">
-        <div className={`text-center mb-16 reveal ${isVisible ? "visible" : ""}`}>
+        <div className={`text-center mb-16 reveal`}>
           <p className="text-sm font-medium uppercase tracking-[0.15em] text-primary mb-3">
             Services
           </p>
@@ -66,7 +66,7 @@ export function Services() {
           {services.map((service, i) => (
             <div
               key={service.title}
-              className={`group p-8 ${getCardClasses(cardStyle)} ${getCardHoverClasses(cardStyle)} reveal ${isVisible ? "visible" : ""} reveal-delay-${i + 1}`}
+              className={`group p-8 ${getCardClasses(cardStyle)} ${getCardHoverClasses(cardStyle)} reveal reveal-delay-${i + 1}`}
             >
               <div className={`mb-5 inline-flex items-center justify-center w-12 h-12 ${getIconContainerClasses(cardStyle)} transition-colors group-hover:bg-primary group-hover:text-primary-foreground`}>
                 <service.icon className="w-6 h-6" />
