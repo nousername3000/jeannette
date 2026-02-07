@@ -147,11 +147,6 @@ export function Gallery() {
                   className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/20 transition-colors duration-300 flex items-end p-4">
-                  <span className="text-sm text-background opacity-0 group-hover:opacity-100 transition-opacity duration-300 font-medium">
-                    {img.caption}
-                  </span>
-                </div>
               </button>
             ))}
           </div>
