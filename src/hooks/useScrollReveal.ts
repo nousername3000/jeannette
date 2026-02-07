@@ -1,19 +1,30 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 
 export function useScrollReveal(threshold = 0.05) {
   const ref = useRef<HTMLDivElement>(null!);
   const [isVisible, setIsVisible] = useState(false);
 
+  // Once visible, keep marking .reveal children as visible on every render
+  const setRef = useCallback(
+    (node: HTMLDivElement | null) => {
+      (ref as any).current = node;
+      if (node && isVisible) {
+        node.querySelectorAll(".reveal").forEach((child) => {
+          child.classList.add("visible");
+        });
+      }
+    },
+    [isVisible]
+  );
+
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
+    if (!el || isVisible) return;
 
-    // Add 'visible' class to all .reveal children when section enters viewport
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          // Immediately mark all reveal elements as visible
           el.querySelectorAll(".reveal").forEach((child) => {
             child.classList.add("visible");
           });
@@ -24,7 +35,7 @@ export function useScrollReveal(threshold = 0.05) {
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, [threshold]);
+  }, [threshold, isVisible]);
 
-  return { ref, isVisible };
+  return { ref: setRef, isVisible };
 }
