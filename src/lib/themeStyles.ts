@@ -10,6 +10,8 @@ export function getCardClasses(style: CardStyle): string {
       return "bg-card text-card-foreground rounded-[var(--radius)] shadow-theme-lg";
     case "glass":
       return "bg-card/60 text-card-foreground rounded-[var(--radius)] border border-border/50 backdrop-blur-md";
+    case "squared":
+      return "bg-card text-card-foreground rounded-none border border-border";
   }
 }
 
@@ -23,6 +25,8 @@ export function getCardHoverClasses(style: CardStyle): string {
       return "hover:shadow-theme hover:-translate-y-1 transition-all duration-300";
     case "glass":
       return "hover:bg-card/80 hover:border-primary/30 transition-all duration-300";
+    case "squared":
+      return "hover:shadow-theme-lg hover:border-primary/40 transition-all duration-300";
   }
 }
 
@@ -80,5 +84,7 @@ export function getIconContainerClasses(style: CardStyle): string {
       return "bg-primary text-primary-foreground rounded-[var(--radius)] shadow-theme-sm";
     case "glass":
       return "bg-primary/20 text-primary rounded-full border border-primary/20";
+    case "squared":
+      return "bg-primary/10 text-primary rounded-none";
   }
 }

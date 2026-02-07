@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
-import { themes, ThemePreset, CardStyle, ImageStyle, ButtonStyle, SectionSpacing, HeroStyle, GalleryStyle, ServicesStyle } from "@/lib/themes";
+import { themes, ThemePreset, CardStyle, ImageStyle, ButtonStyle, SectionSpacing, HeroStyle, GalleryStyle, ServicesStyle, ServicesLayout } from "@/lib/themes";
 import { fontPairings, FontPairing } from "@/lib/fontPairings";
 import { colorSchemes, ColorScheme } from "@/lib/colorSchemes";
 
@@ -11,6 +11,7 @@ interface StyleOverrides {
   heroStyle?: HeroStyle;
   galleryStyle?: GalleryStyle;
   servicesStyle?: ServicesStyle;
+  servicesLayout?: ServicesLayout;
 }
 
 interface ThemeContextValue {
@@ -24,6 +25,7 @@ interface ThemeContextValue {
   heroStyle: HeroStyle;
   galleryStyle: GalleryStyle;
   servicesStyle: ServicesStyle;
+  servicesLayout: ServicesLayout;
   overrides: StyleOverrides;
   setOverrides: (o: StyleOverrides) => void;
   fontPairingId: string;
@@ -48,7 +50,6 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const setThemeId = (id: string) => {
     setThemeIdState(id);
     setOverrides({});
-    // Map preset to matching color scheme & font
     const t = themes.find((t) => t.id === id);
     if (t) {
       if (id === "warm") { setColorSchemeId("terracotta"); setFontPairingId("playfair-dm"); }
@@ -57,7 +58,6 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  // Apply color scheme variables
   useEffect(() => {
     const root = document.documentElement;
     Object.entries(colorScheme.variables).forEach(([key, value]) => {
@@ -65,14 +65,12 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     });
   }, [colorScheme]);
 
-  // Apply font pairing variables
   useEffect(() => {
     const root = document.documentElement;
     root.style.setProperty("--font-display", fontPairing.display);
     root.style.setProperty("--font-body", fontPairing.body);
   }, [fontPairing]);
 
-  // Apply non-color, non-font theme variables (radius etc.)
   useEffect(() => {
     const root = document.documentElement;
     const skip = ["--font-display", "--font-body", "--shadow-sm", "--shadow-md", "--shadow-lg",
@@ -93,12 +91,13 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const heroStyle = overrides.heroStyle ?? theme.heroStyle;
   const galleryStyle = overrides.galleryStyle ?? theme.galleryStyle;
   const servicesStyle = overrides.servicesStyle ?? theme.servicesStyle;
+  const servicesLayout = overrides.servicesLayout ?? theme.servicesLayout;
 
   return (
     <ThemeContext.Provider
       value={{
         themeId, setThemeId, theme,
-        cardStyle, imageStyle, buttonStyle, sectionSpacing, heroStyle, galleryStyle, servicesStyle,
+        cardStyle, imageStyle, buttonStyle, sectionSpacing, heroStyle, galleryStyle, servicesStyle, servicesLayout,
         overrides, setOverrides,
         fontPairingId, setFontPairingId, fontPairing,
         colorSchemeId, setColorSchemeId, colorScheme,

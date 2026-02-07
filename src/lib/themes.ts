@@ -1,10 +1,11 @@
-export type CardStyle = "bordered" | "elevated" | "glass" | "flat";
+export type CardStyle = "bordered" | "elevated" | "glass" | "flat" | "squared";
 export type ImageStyle = "rounded" | "square" | "circle";
 export type ButtonStyle = "solid" | "pill" | "soft";
 export type SectionSpacing = "compact" | "comfortable" | "spacious";
 export type HeroStyle = "image" | "animated" | "gradient";
 export type GalleryStyle = "masonry" | "grid";
 export type ServicesStyle = "icons-only" | "with-images";
+export type ServicesLayout = "cards" | "horizontal" | "minimal" | "overlay";
 
 export interface ThemePreset {
   id: string;
@@ -19,6 +20,7 @@ export interface ThemePreset {
   heroStyle: HeroStyle;
   galleryStyle: GalleryStyle;
   servicesStyle: ServicesStyle;
+  servicesLayout: ServicesLayout;
 }
 
 export const themes: ThemePreset[] = [
@@ -34,6 +36,7 @@ export const themes: ThemePreset[] = [
     sectionSpacing: "comfortable",
     galleryStyle: "masonry",
     servicesStyle: "icons-only",
+    servicesLayout: "cards",
     variables: {
       "--background": "35 40% 95%",
       "--foreground": "25 30% 15%",
@@ -70,6 +73,7 @@ export const themes: ThemePreset[] = [
     sectionSpacing: "comfortable",
     galleryStyle: "grid",
     servicesStyle: "icons-only",
+    servicesLayout: "cards",
     variables: {
       "--background": "210 20% 98%",
       "--foreground": "215 30% 12%",
@@ -106,6 +110,7 @@ export const themes: ThemePreset[] = [
     sectionSpacing: "spacious",
     galleryStyle: "masonry",
     servicesStyle: "icons-only",
+    servicesLayout: "cards",
     variables: {
       "--background": "225 35% 7%",
       "--foreground": "42 25% 88%",
