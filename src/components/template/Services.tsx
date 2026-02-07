@@ -1,5 +1,7 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useTheme } from "@/contexts/ThemeContext";
 import { Brain, Moon, Shield, Sparkles, Flame, Leaf } from "lucide-react";
+import { getCardClasses, getCardHoverClasses, getIconContainerClasses, getSectionPadding } from "@/lib/themeStyles";
 
 const services = [
   {
@@ -42,9 +44,10 @@ const services = [
 
 export function Services() {
   const { ref, isVisible } = useScrollReveal();
+  const { cardStyle, sectionSpacing } = useTheme();
 
   return (
-    <section id="services" className="py-24 md:py-32">
+    <section id="services" className={getSectionPadding(sectionSpacing)}>
       <div ref={ref} className="mx-auto max-w-6xl px-6">
         <div className={`text-center mb-16 reveal ${isVisible ? "visible" : ""}`}>
           <p className="text-sm font-medium uppercase tracking-[0.15em] text-primary mb-3">
@@ -63,9 +66,9 @@ export function Services() {
           {services.map((service, i) => (
             <div
               key={service.title}
-              className={`group rounded-[var(--radius)] border border-border bg-card p-8 transition-all duration-300 hover:shadow-theme-lg hover:-translate-y-1 reveal ${isVisible ? "visible" : ""} reveal-delay-${i + 1}`}
+              className={`group p-8 ${getCardClasses(cardStyle)} ${getCardHoverClasses(cardStyle)} reveal ${isVisible ? "visible" : ""} reveal-delay-${i + 1}`}
             >
-              <div className="mb-5 inline-flex items-center justify-center w-12 h-12 rounded-[var(--radius)] bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+              <div className={`mb-5 inline-flex items-center justify-center w-12 h-12 ${getIconContainerClasses(cardStyle)} transition-colors group-hover:bg-primary group-hover:text-primary-foreground`}>
                 <service.icon className="w-6 h-6" />
               </div>
               <h3 className="font-display text-xl font-semibold text-card-foreground mb-3">

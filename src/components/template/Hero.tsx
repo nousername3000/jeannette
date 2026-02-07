@@ -1,6 +1,10 @@
 import heroBg from "@/assets/hero-bg.jpg";
+import { useTheme } from "@/contexts/ThemeContext";
+import { getButtonClasses, getOutlineButtonClasses } from "@/lib/themeStyles";
 
 export function Hero() {
+  const { buttonStyle } = useTheme();
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background image with overlay */}
@@ -30,13 +34,13 @@ export function Hero() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
             href="#contact"
-            className="inline-flex items-center justify-center rounded-[var(--radius)] bg-primary px-8 py-3.5 text-base font-semibold text-primary-foreground hover:opacity-90 transition-opacity shadow-theme"
+            className={`inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold shadow-theme ${getButtonClasses(buttonStyle)}`}
           >
             Book Your Free Consultation
           </a>
           <a
             href="#services"
-            className="inline-flex items-center justify-center rounded-[var(--radius)] border border-border bg-background/60 px-8 py-3.5 text-base font-semibold text-foreground hover:bg-muted transition-colors"
+            className={`inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold ${getOutlineButtonClasses(buttonStyle)}`}
           >
             Explore Services
           </a>

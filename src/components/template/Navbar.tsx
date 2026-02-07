@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { useTheme } from "@/contexts/ThemeContext";
+import { getButtonClasses } from "@/lib/themeStyles";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -12,6 +14,7 @@ const navLinks = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { buttonStyle } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -45,7 +48,7 @@ export function Navbar() {
           ))}
           <a
             href="#contact"
-            className="inline-flex items-center justify-center rounded-[var(--radius)] bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
+            className={`inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium ${getButtonClasses(buttonStyle)}`}
           >
             Book a Session
           </a>
@@ -77,7 +80,7 @@ export function Navbar() {
           <a
             href="#contact"
             onClick={() => setMobileOpen(false)}
-            className="mt-2 block text-center rounded-[var(--radius)] bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground"
+            className={`mt-2 block text-center px-5 py-2.5 text-sm font-medium ${getButtonClasses(buttonStyle)}`}
           >
             Book a Session
           </a>
