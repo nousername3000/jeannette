@@ -2,7 +2,7 @@ import { Mail, Phone, MapPin } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer id="contact" className="bg-card border-t border-border">
+    <footer className="bg-card border-t border-border">
       <div className="mx-auto max-w-6xl px-6 py-16">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
@@ -22,7 +22,7 @@ export function Footer() {
               Quick Links
             </h4>
             <ul className="space-y-2">
-              {["About", "Services", "Process", "Testimonials"].map((l) => (
+              {["About", "Services", "Process", "Testimonials", "FAQ", "Contact"].map((l) => (
                 <li key={l}>
                   <a
                     href={`#${l.toLowerCase()}`}
