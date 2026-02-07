@@ -43,12 +43,12 @@ const services = [
 ];
 
 export function Services() {
-  const { ref } = useScrollReveal();
+  const { ref, revealed } = useScrollReveal();
   const { cardStyle, sectionSpacing } = useTheme();
 
   return (
     <section id="services" className={getSectionPadding(sectionSpacing)}>
-      <div ref={ref} className="mx-auto max-w-6xl px-6">
+      <div ref={ref} className={`mx-auto max-w-6xl px-6 ${revealed ? "revealed" : ""}`}>
         <div className={`text-center mb-16 reveal`}>
           <p className="text-sm font-medium uppercase tracking-[0.15em] text-primary mb-3">
             Services

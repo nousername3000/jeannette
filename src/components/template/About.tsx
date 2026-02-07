@@ -10,14 +10,14 @@ const credentials = [
 ];
 
 export function About() {
-  const { ref } = useScrollReveal();
+  const { ref, revealed } = useScrollReveal();
   const { imageStyle, sectionSpacing } = useTheme();
 
   return (
     <section id="about" className={`${getSectionPadding(sectionSpacing)} bg-muted/40`}>
       <div
         ref={ref}
-        className={`mx-auto max-w-6xl px-6 grid md:grid-cols-2 gap-12 md:gap-16 items-center reveal`}
+        className={`mx-auto max-w-6xl px-6 grid md:grid-cols-2 gap-12 md:gap-16 items-center reveal ${revealed ? "revealed visible" : ""}`}
       >
         {/* Image side */}
         <div className="flex justify-center">

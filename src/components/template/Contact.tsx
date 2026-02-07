@@ -4,12 +4,12 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 
 export function Contact() {
-  const { ref: containerRef } = useScrollReveal();
+  const { ref: containerRef, revealed } = useScrollReveal();
   const { cardStyle, buttonStyle, sectionSpacing } = useTheme();
 
   return (
     <section id="contact" className={`${getSectionPadding(sectionSpacing)} bg-muted/30`}>
-      <div className="mx-auto max-w-6xl px-6" ref={containerRef}>
+      <div className={`mx-auto max-w-6xl px-6 ${revealed ? "revealed" : ""}`} ref={containerRef}>
         <div className="text-center mb-12 reveal">
           <span className="text-sm font-medium text-primary tracking-widest uppercase">
             Get in Touch
