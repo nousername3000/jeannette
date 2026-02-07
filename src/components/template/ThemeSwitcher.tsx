@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Palette, X } from "lucide-react";
-import { themes, CardStyle, ImageStyle, ButtonStyle, SectionSpacing, HeroStyle, GalleryStyle, ServicesStyle } from "@/lib/themes";
+import { themes, CardStyle, ImageStyle, ButtonStyle, SectionSpacing, HeroStyle, GalleryStyle, ServicesStyle, ServicesLayout } from "@/lib/themes";
 import { fontPairings } from "@/lib/fontPairings";
 import { colorSchemes } from "@/lib/colorSchemes";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -10,6 +10,7 @@ const cardOptions: { value: CardStyle; label: string }[] = [
   { value: "bordered", label: "Bordered" },
   { value: "elevated", label: "Elevated" },
   { value: "glass", label: "Glass" },
+  { value: "squared", label: "Squared" },
 ];
 
 const imageOptions: { value: ImageStyle; label: string }[] = [
@@ -44,6 +45,13 @@ const galleryOptions: { value: GalleryStyle; label: string }[] = [
 const servicesOptions: { value: ServicesStyle; label: string }[] = [
   { value: "icons-only", label: "Icons Only" },
   { value: "with-images", label: "With Images" },
+];
+
+const servicesLayoutOptions: { value: ServicesLayout; label: string }[] = [
+  { value: "cards", label: "Cards" },
+  { value: "horizontal", label: "Horizontal" },
+  { value: "minimal", label: "Minimal" },
+  { value: "overlay", label: "Overlay" },
 ];
 
 function StyleRow<T extends string>({
@@ -94,7 +102,7 @@ export function ThemeSwitcher() {
   const [open, setOpen] = useState(false);
   const {
     themeId, setThemeId,
-    cardStyle, imageStyle, buttonStyle, sectionSpacing, heroStyle, galleryStyle, servicesStyle,
+    cardStyle, imageStyle, buttonStyle, sectionSpacing, heroStyle, galleryStyle, servicesStyle, servicesLayout,
     overrides, setOverrides,
     fontPairingId, setFontPairingId,
     colorSchemeId, setColorSchemeId,
@@ -248,10 +256,16 @@ export function ThemeSwitcher() {
               onChange={(v) => setOverrides({ ...overrides, galleryStyle: v })}
             />
             <StyleRow
-              label="Services"
+              label="Services Images"
               options={servicesOptions}
               value={servicesStyle}
               onChange={(v) => setOverrides({ ...overrides, servicesStyle: v })}
+            />
+            <StyleRow
+              label="Services Layout"
+              options={servicesLayoutOptions}
+              value={servicesLayout}
+              onChange={(v) => setOverrides({ ...overrides, servicesLayout: v })}
             />
           </div>
         </div>
