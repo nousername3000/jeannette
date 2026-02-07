@@ -105,7 +105,7 @@ function Lightbox({
 }
 
 export function Gallery() {
-  const { ref: containerRef } = useScrollReveal();
+  const { ref: containerRef, revealed } = useScrollReveal();
   const { imageStyle, sectionSpacing } = useTheme();
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
@@ -119,7 +119,7 @@ export function Gallery() {
   return (
     <>
       <section id="gallery" className={`${getSectionPadding(sectionSpacing)} bg-background`}>
-        <div className="mx-auto max-w-6xl px-6" ref={containerRef}>
+        <div className={`mx-auto max-w-6xl px-6 ${revealed ? "revealed" : ""}`} ref={containerRef}>
           <div className="text-center mb-12 reveal">
             <span className="text-sm font-medium text-primary tracking-widest uppercase">
               Gallery

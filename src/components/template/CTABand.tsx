@@ -3,14 +3,14 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { getOutlineButtonClasses } from "@/lib/themeStyles";
 
 export function CTABand() {
-  const { ref } = useScrollReveal();
+  const { ref, revealed } = useScrollReveal();
   const { buttonStyle } = useTheme();
 
   return (
     <section className="py-20 md:py-28 bg-primary">
       <div
         ref={ref}
-        className={`mx-auto max-w-4xl px-6 text-center reveal`}
+        className={`mx-auto max-w-4xl px-6 text-center reveal ${revealed ? "revealed visible" : ""}`}
       >
         <h2 className="font-display text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
           Ready to Begin Your Transformation?

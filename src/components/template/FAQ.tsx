@@ -32,13 +32,13 @@ const faqs = [
 ];
 
 export function FAQ() {
-  const { ref: containerRef } = useScrollReveal();
+  const { ref: containerRef, revealed } = useScrollReveal();
   const { cardStyle, sectionSpacing } = useTheme();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
     <section id="faq" className={`${getSectionPadding(sectionSpacing)} bg-background`}>
-      <div className="mx-auto max-w-3xl px-6" ref={containerRef}>
+      <div className={`mx-auto max-w-3xl px-6 ${revealed ? "revealed" : ""}`} ref={containerRef}>
         <div className="text-center mb-12 reveal">
           <span className="text-sm font-medium text-primary tracking-widest uppercase">
             FAQ

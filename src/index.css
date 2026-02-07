@@ -76,7 +76,8 @@
     transform: translateY(24px);
     transition: opacity 0.7s ease-out, transform 0.7s ease-out;
   }
-  .reveal.visible {
+  .reveal.visible,
+  .revealed .reveal {
     opacity: 1;
     transform: translateY(0);
   }

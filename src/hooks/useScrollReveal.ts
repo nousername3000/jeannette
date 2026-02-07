@@ -1,34 +1,17 @@
-import { useEffect, useRef } from "react";
-
-function markRevealed(el: HTMLElement) {
-  // Mark the element itself if it has .reveal
-  if (el.classList.contains("reveal")) {
-    el.classList.add("visible");
-  }
-  // Mark all .reveal descendants
-  el.querySelectorAll(".reveal").forEach((child) => {
-    child.classList.add("visible");
-  });
-}
+import { useEffect, useRef, useState } from "react";
 
 export function useScrollReveal(threshold = 0.05) {
   const ref = useRef<HTMLDivElement>(null!);
-  const revealed = useRef(false);
+  const [revealed, setRevealed] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
-
-    if (revealed.current) {
-      markRevealed(el);
-      return;
-    }
+    if (!el || revealed) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          revealed.current = true;
-          markRevealed(el);
+          setRevealed(true);
           observer.unobserve(entry.target);
         }
       },
@@ -36,7 +19,7 @@ export function useScrollReveal(threshold = 0.05) {
     );
     observer.observe(el);
     return () => observer.disconnect();
-  });
+  }, [threshold, revealed]);
 
-  return { ref };
+  return { ref, revealed };
 }
