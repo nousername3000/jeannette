@@ -1,9 +1,18 @@
+export type CardStyle = "bordered" | "elevated" | "glass" | "flat";
+export type ImageStyle = "rounded" | "square" | "circle";
+export type ButtonStyle = "solid" | "pill" | "soft";
+export type SectionSpacing = "compact" | "comfortable" | "spacious";
+
 export interface ThemePreset {
   id: string;
   name: string;
   description: string;
   emoji: string;
   variables: Record<string, string>;
+  cardStyle: CardStyle;
+  imageStyle: ImageStyle;
+  buttonStyle: ButtonStyle;
+  sectionSpacing: SectionSpacing;
 }
 
 export const themes: ThemePreset[] = [
@@ -12,6 +21,10 @@ export const themes: ThemePreset[] = [
     name: "Warm & Grounded",
     description: "Terracotta, cream, sage — cozy therapy office",
     emoji: "🍂",
+    cardStyle: "bordered",
+    imageStyle: "rounded",
+    buttonStyle: "solid",
+    sectionSpacing: "comfortable",
     variables: {
       "--background": "35 40% 95%",
       "--foreground": "25 30% 15%",
@@ -41,6 +54,10 @@ export const themes: ThemePreset[] = [
     name: "Clean & Clinical",
     description: "Ice blue, slate, crisp — modern practice",
     emoji: "❄️",
+    cardStyle: "elevated",
+    imageStyle: "square",
+    buttonStyle: "pill",
+    sectionSpacing: "comfortable",
     variables: {
       "--background": "210 20% 98%",
       "--foreground": "215 30% 12%",
@@ -70,6 +87,10 @@ export const themes: ThemePreset[] = [
     name: "Mystical & Luxe",
     description: "Deep navy, gold — premium wellness",
     emoji: "✨",
+    cardStyle: "glass",
+    imageStyle: "circle",
+    buttonStyle: "soft",
+    sectionSpacing: "spacious",
     variables: {
       "--background": "225 35% 7%",
       "--foreground": "42 25% 88%",

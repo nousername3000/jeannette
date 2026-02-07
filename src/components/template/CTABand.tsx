@@ -1,7 +1,10 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useTheme } from "@/contexts/ThemeContext";
+import { getOutlineButtonClasses } from "@/lib/themeStyles";
 
 export function CTABand() {
   const { ref, isVisible } = useScrollReveal();
+  const { buttonStyle } = useTheme();
 
   return (
     <section className="py-20 md:py-28 bg-primary">
@@ -18,7 +21,11 @@ export function CTABand() {
         </p>
         <a
           href="#contact"
-          className="inline-flex items-center justify-center rounded-[var(--radius)] bg-background text-foreground px-8 py-3.5 text-base font-semibold hover:opacity-90 transition-opacity shadow-theme"
+          className={`inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold shadow-theme ${
+            buttonStyle === "pill"
+              ? "rounded-full bg-background text-foreground hover:opacity-90 transition-opacity"
+              : "rounded-[var(--radius)] bg-background text-foreground hover:opacity-90 transition-opacity"
+          }`}
         >
           Book Your Free Call
         </a>

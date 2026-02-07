@@ -1,4 +1,6 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useTheme } from "@/contexts/ThemeContext";
+import { getSectionPadding } from "@/lib/themeStyles";
 
 const steps = [
   {
@@ -29,9 +31,10 @@ const steps = [
 
 export function Process() {
   const { ref, isVisible } = useScrollReveal();
+  const { sectionSpacing } = useTheme();
 
   return (
-    <section id="process" className="py-24 md:py-32 bg-muted/40">
+    <section id="process" className={`${getSectionPadding(sectionSpacing)} bg-muted/40`}>
       <div ref={ref} className="mx-auto max-w-6xl px-6">
         <div className={`text-center mb-16 reveal ${isVisible ? "visible" : ""}`}>
           <p className="text-sm font-medium uppercase tracking-[0.15em] text-primary mb-3">

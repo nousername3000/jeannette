@@ -1,5 +1,7 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useTheme } from "@/contexts/ThemeContext";
 import { Star } from "lucide-react";
+import { getCardClasses, getSectionPadding } from "@/lib/themeStyles";
 
 const testimonials = [
   {
@@ -27,9 +29,10 @@ const testimonials = [
 
 export function Testimonials() {
   const { ref, isVisible } = useScrollReveal();
+  const { cardStyle, sectionSpacing } = useTheme();
 
   return (
-    <section id="testimonials" className="py-24 md:py-32">
+    <section id="testimonials" className={getSectionPadding(sectionSpacing)}>
       <div ref={ref} className="mx-auto max-w-6xl px-6">
         <div className={`text-center mb-16 reveal ${isVisible ? "visible" : ""}`}>
           <p className="text-sm font-medium uppercase tracking-[0.15em] text-primary mb-3">
@@ -44,7 +47,7 @@ export function Testimonials() {
           {testimonials.map((t, i) => (
             <div
               key={t.name}
-              className={`rounded-[var(--radius)] border border-border bg-card p-8 flex flex-col shadow-theme-sm reveal ${isVisible ? "visible" : ""} reveal-delay-${i + 1}`}
+              className={`p-8 flex flex-col ${getCardClasses(cardStyle)} reveal ${isVisible ? "visible" : ""} reveal-delay-${i + 1}`}
             >
               <div className="flex gap-1 mb-4">
                 {Array.from({ length: t.stars }).map((_, j) => (
