@@ -1,13 +1,33 @@
-import { useRef, useEffect } from "react";
 import heroBg from "@/assets/hero-bg.jpg";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getButtonClasses, getOutlineButtonClasses } from "@/lib/themeStyles";
-import type { HeroStyle } from "@/lib/themes";
+import type { HeroStyle, HeroLayout } from "@/lib/themes";
 
-function HeroContent({ buttonStyle }: { buttonStyle: string }) {
+/* ── CTA Buttons ── */
+function HeroCTA({ buttonStyle }: { buttonStyle: string }) {
   const btnClasses = getButtonClasses(buttonStyle as any);
   const outlineBtnClasses = getOutlineButtonClasses(buttonStyle as any);
 
+  return (
+    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a
+        href="#contact"
+        className={`inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold shadow-theme ${btnClasses}`}
+      >
+        Book Your Free Consultation
+      </a>
+      <a
+        href="#services"
+        className={`inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold ${outlineBtnClasses}`}
+      >
+        Explore Services
+      </a>
+    </div>
+  );
+}
+
+/* ── Layout 1: Centered (original) ── */
+function LayoutCentered({ buttonStyle }: { buttonStyle: string }) {
   return (
     <div className="relative z-10 mx-auto max-w-4xl px-6 text-center py-32">
       <p className="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground">
@@ -22,25 +42,82 @@ function HeroContent({ buttonStyle }: { buttonStyle: string }) {
         Gentle, evidence-based hypnotherapy to help you release anxiety,
         overcome limiting beliefs, and reclaim the peaceful life you deserve.
       </p>
-      <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a
-          href="#contact"
-          className={`inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold shadow-theme ${btnClasses}`}
-        >
-          Book Your Free Consultation
-        </a>
-        <a
-          href="#services"
-          className={`inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold ${outlineBtnClasses}`}
-        >
-          Explore Services
-        </a>
+      <HeroCTA buttonStyle={buttonStyle} />
+    </div>
+  );
+}
+
+/* ── Layout 2: Split (text left, visual right) ── */
+function LayoutSplit({ buttonStyle }: { buttonStyle: string }) {
+  return (
+    <div className="relative z-10 mx-auto max-w-6xl px-6 py-24 md:py-32 grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <p className="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground">
+          Certified Clinical Hypnotherapist
+        </p>
+        <h1 className="font-display text-4xl md:text-6xl font-bold leading-tight text-foreground mb-6">
+          Find Your <span className="text-primary">Inner Calm</span>
+        </h1>
+        <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+          Gentle, evidence-based hypnotherapy to help you release anxiety,
+          overcome limiting beliefs, and reclaim the peaceful life you deserve.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4">
+          <HeroCTA buttonStyle={buttonStyle} />
+        </div>
+      </div>
+      <div className="hidden md:flex justify-center">
+        <div className="w-80 h-80 rounded-[var(--radius)] overflow-hidden shadow-theme-lg">
+          <img src={heroBg} alt="" className="w-full h-full object-cover" />
+        </div>
       </div>
     </div>
   );
 }
 
-/* ── Image variant ── */
+/* ── Layout 3: Minimal (stripped back, just headline + CTA) ── */
+function LayoutMinimal({ buttonStyle }: { buttonStyle: string }) {
+  return (
+    <div className="relative z-10 mx-auto max-w-3xl px-6 text-center py-40 md:py-48">
+      <h1 className="font-display text-6xl md:text-8xl font-bold leading-[0.95] text-foreground mb-8">
+        Inner <span className="text-primary">Calm</span>
+      </h1>
+      <p className="text-lg text-muted-foreground mb-10">
+        Clinical hypnotherapy for lasting change.
+      </p>
+      <HeroCTA buttonStyle={buttonStyle} />
+    </div>
+  );
+}
+
+/* ── Layout 4: Bold (oversized typography, asymmetric) ── */
+function LayoutBold({ buttonStyle }: { buttonStyle: string }) {
+  return (
+    <div className="relative z-10 mx-auto max-w-6xl px-6 py-24 md:py-32">
+      <p className="mb-6 text-sm font-medium uppercase tracking-[0.2em] text-primary">
+        Certified Clinical Hypnotherapist
+      </p>
+      <h1 className="font-display text-6xl md:text-[8rem] font-bold leading-[0.9] text-foreground mb-8 max-w-4xl">
+        Find Your <span className="text-primary">Inner Calm</span>
+      </h1>
+      <div className="flex flex-col md:flex-row md:items-end gap-8 md:gap-16">
+        <p className="text-lg text-muted-foreground leading-relaxed max-w-md">
+          Gentle, evidence-based hypnotherapy to help you release anxiety and reclaim the peaceful life you deserve.
+        </p>
+        <HeroCTA buttonStyle={buttonStyle} />
+      </div>
+    </div>
+  );
+}
+
+const layouts: Record<HeroLayout, React.FC<{ buttonStyle: string }>> = {
+  centered: LayoutCentered,
+  split: LayoutSplit,
+  minimal: LayoutMinimal,
+  bold: LayoutBold,
+};
+
+/* ── Background variants (unchanged) ── */
 function HeroImage() {
   return (
     <div className="absolute inset-0">
@@ -50,11 +127,9 @@ function HeroImage() {
   );
 }
 
-/* ── Animated gradient variant ── */
 function HeroAnimated() {
   return (
     <div className="absolute inset-0 overflow-hidden">
-      {/* Animated gradient orbs */}
       <div className="absolute inset-0 bg-background" />
       <div className="absolute w-[600px] h-[600px] -top-40 -left-40 rounded-full bg-primary/15 blur-3xl animate-hero-orb-1" />
       <div className="absolute w-[500px] h-[500px] top-1/3 -right-32 rounded-full bg-accent/12 blur-3xl animate-hero-orb-2" />
@@ -63,7 +138,6 @@ function HeroAnimated() {
   );
 }
 
-/* ── Gradient variant (no animation, clean sweep) ── */
 function HeroGradient() {
   return (
     <div className="absolute inset-0">
@@ -80,14 +154,15 @@ const backgrounds: Record<HeroStyle, () => JSX.Element> = {
 };
 
 export function Hero({ variant }: { variant?: HeroStyle }) {
-  const { buttonStyle, heroStyle } = useTheme();
+  const { buttonStyle, heroStyle, heroLayout } = useTheme();
   const style = variant ?? heroStyle;
   const Background = backgrounds[style];
+  const Layout = layouts[heroLayout];
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <Background />
-      <HeroContent buttonStyle={buttonStyle} />
+      <Layout buttonStyle={buttonStyle} />
     </section>
   );
 }

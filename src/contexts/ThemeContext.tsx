@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
-import { themes, ThemePreset, CardStyle, ImageStyle, ButtonStyle, SectionSpacing, HeroStyle, GalleryStyle, ServicesStyle, ServicesLayout } from "@/lib/themes";
+import { themes, ThemePreset, CardStyle, ImageStyle, ButtonStyle, SectionSpacing, HeroStyle, HeroLayout, GalleryStyle, ServicesStyle, ServicesLayout, FAQLayout, ProcessLayout, AboutLayout } from "@/lib/themes";
 import { fontPairings, FontPairing } from "@/lib/fontPairings";
 import { colorSchemes, ColorScheme } from "@/lib/colorSchemes";
 
@@ -9,9 +9,13 @@ interface StyleOverrides {
   buttonStyle?: ButtonStyle;
   sectionSpacing?: SectionSpacing;
   heroStyle?: HeroStyle;
+  heroLayout?: HeroLayout;
   galleryStyle?: GalleryStyle;
   servicesStyle?: ServicesStyle;
   servicesLayout?: ServicesLayout;
+  faqLayout?: FAQLayout;
+  processLayout?: ProcessLayout;
+  aboutLayout?: AboutLayout;
 }
 
 interface ThemeContextValue {
@@ -23,9 +27,13 @@ interface ThemeContextValue {
   buttonStyle: ButtonStyle;
   sectionSpacing: SectionSpacing;
   heroStyle: HeroStyle;
+  heroLayout: HeroLayout;
   galleryStyle: GalleryStyle;
   servicesStyle: ServicesStyle;
   servicesLayout: ServicesLayout;
+  faqLayout: FAQLayout;
+  processLayout: ProcessLayout;
+  aboutLayout: AboutLayout;
   overrides: StyleOverrides;
   setOverrides: (o: StyleOverrides) => void;
   fontPairingId: string;
@@ -89,15 +97,19 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const buttonStyle = overrides.buttonStyle ?? theme.buttonStyle;
   const sectionSpacing = overrides.sectionSpacing ?? theme.sectionSpacing;
   const heroStyle = overrides.heroStyle ?? theme.heroStyle;
+  const heroLayout = overrides.heroLayout ?? theme.heroLayout;
   const galleryStyle = overrides.galleryStyle ?? theme.galleryStyle;
   const servicesStyle = overrides.servicesStyle ?? theme.servicesStyle;
   const servicesLayout = overrides.servicesLayout ?? theme.servicesLayout;
+  const faqLayout = overrides.faqLayout ?? theme.faqLayout;
+  const processLayout = overrides.processLayout ?? theme.processLayout;
+  const aboutLayout = overrides.aboutLayout ?? theme.aboutLayout;
 
   return (
     <ThemeContext.Provider
       value={{
         themeId, setThemeId, theme,
-        cardStyle, imageStyle, buttonStyle, sectionSpacing, heroStyle, galleryStyle, servicesStyle, servicesLayout,
+        cardStyle, imageStyle, buttonStyle, sectionSpacing, heroStyle, heroLayout, galleryStyle, servicesStyle, servicesLayout, faqLayout, processLayout, aboutLayout,
         overrides, setOverrides,
         fontPairingId, setFontPairingId, fontPairing,
         colorSchemeId, setColorSchemeId, colorScheme,
