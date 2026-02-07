@@ -5,6 +5,7 @@ import { Services } from "@/components/template/Services";
 import { Process } from "@/components/template/Process";
 import { ParallaxBand } from "@/components/template/ParallaxBand";
 import { Testimonials } from "@/components/template/Testimonials";
+import { Gallery } from "@/components/template/Gallery";
 import { FAQ } from "@/components/template/FAQ";
 import { CTABand } from "@/components/template/CTABand";
 import { Contact } from "@/components/template/Contact";
@@ -21,6 +22,7 @@ const Index = () => {
       <Process />
       <ParallaxBand />
       <Testimonials />
+      <Gallery />
       <FAQ />
       <CTABand />
       <Contact />
