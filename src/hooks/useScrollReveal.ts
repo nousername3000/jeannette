@@ -1,5 +1,16 @@
 import { useEffect, useRef } from "react";
 
+function markRevealed(el: HTMLElement) {
+  // Mark the element itself if it has .reveal
+  if (el.classList.contains("reveal")) {
+    el.classList.add("visible");
+  }
+  // Mark all .reveal descendants
+  el.querySelectorAll(".reveal").forEach((child) => {
+    child.classList.add("visible");
+  });
+}
+
 export function useScrollReveal(threshold = 0.05) {
   const ref = useRef<HTMLDivElement>(null!);
   const revealed = useRef(false);
@@ -8,11 +19,8 @@ export function useScrollReveal(threshold = 0.05) {
     const el = ref.current;
     if (!el) return;
 
-    // If already revealed, just re-apply visible class (handles re-renders)
     if (revealed.current) {
-      el.querySelectorAll(".reveal").forEach((child) => {
-        child.classList.add("visible");
-      });
+      markRevealed(el);
       return;
     }
 
@@ -20,9 +28,7 @@ export function useScrollReveal(threshold = 0.05) {
       ([entry]) => {
         if (entry.isIntersecting) {
           revealed.current = true;
-          el.querySelectorAll(".reveal").forEach((child) => {
-            child.classList.add("visible");
-          });
+          markRevealed(el);
           observer.unobserve(entry.target);
         }
       },
