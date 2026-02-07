@@ -3,8 +3,11 @@ import { Hero } from "@/components/template/Hero";
 import { About } from "@/components/template/About";
 import { Services } from "@/components/template/Services";
 import { Process } from "@/components/template/Process";
+import { ParallaxBand } from "@/components/template/ParallaxBand";
 import { Testimonials } from "@/components/template/Testimonials";
+import { FAQ } from "@/components/template/FAQ";
 import { CTABand } from "@/components/template/CTABand";
+import { Contact } from "@/components/template/Contact";
 import { Footer } from "@/components/template/Footer";
 import { ThemeSwitcher } from "@/components/template/ThemeSwitcher";
 
@@ -16,8 +19,11 @@ const Index = () => {
       <About />
       <Services />
       <Process />
+      <ParallaxBand />
       <Testimonials />
+      <FAQ />
       <CTABand />
+      <Contact />
       <Footer />
       <ThemeSwitcher />
     </div>
