@@ -28,13 +28,13 @@ const testimonials = [
 ];
 
 export function Testimonials() {
-  const { ref, isVisible } = useScrollReveal();
+  const { ref } = useScrollReveal();
   const { cardStyle, sectionSpacing } = useTheme();
 
   return (
     <section id="testimonials" className={getSectionPadding(sectionSpacing)}>
       <div ref={ref} className="mx-auto max-w-6xl px-6">
-        <div className={`text-center mb-16 reveal ${isVisible ? "visible" : ""}`}>
+        <div className={`text-center mb-16 reveal`}>
           <p className="text-sm font-medium uppercase tracking-[0.15em] text-primary mb-3">
             Testimonials
           </p>
@@ -47,7 +47,7 @@ export function Testimonials() {
           {testimonials.map((t, i) => (
             <div
               key={t.name}
-              className={`p-8 flex flex-col ${getCardClasses(cardStyle)} reveal ${isVisible ? "visible" : ""} reveal-delay-${i + 1}`}
+              className={`p-8 flex flex-col ${getCardClasses(cardStyle)} reveal reveal-delay-${i + 1}`}
             >
               <div className="flex gap-1 mb-4">
                 {Array.from({ length: t.stars }).map((_, j) => (
