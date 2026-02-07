@@ -3,9 +3,13 @@ export type ImageStyle = "rounded" | "square" | "circle";
 export type ButtonStyle = "solid" | "pill" | "soft";
 export type SectionSpacing = "compact" | "comfortable" | "spacious";
 export type HeroStyle = "image" | "animated" | "gradient";
+export type HeroLayout = "centered" | "split" | "minimal" | "bold";
 export type GalleryStyle = "masonry" | "grid";
 export type ServicesStyle = "icons-only" | "with-images";
 export type ServicesLayout = "cards" | "horizontal" | "minimal" | "overlay";
+export type FAQLayout = "accordion" | "grid" | "two-column" | "flat";
+export type ProcessLayout = "grid" | "timeline" | "cards" | "minimal";
+export type AboutLayout = "split" | "centered" | "cards" | "full-width";
 
 export interface ThemePreset {
   id: string;
@@ -21,6 +25,10 @@ export interface ThemePreset {
   galleryStyle: GalleryStyle;
   servicesStyle: ServicesStyle;
   servicesLayout: ServicesLayout;
+  heroLayout: HeroLayout;
+  faqLayout: FAQLayout;
+  processLayout: ProcessLayout;
+  aboutLayout: AboutLayout;
 }
 
 export const themes: ThemePreset[] = [
@@ -37,6 +45,10 @@ export const themes: ThemePreset[] = [
     galleryStyle: "masonry",
     servicesStyle: "icons-only",
     servicesLayout: "cards",
+    heroLayout: "centered",
+    faqLayout: "accordion",
+    processLayout: "grid",
+    aboutLayout: "split",
     variables: {
       "--background": "35 40% 95%",
       "--foreground": "25 30% 15%",
@@ -74,6 +86,10 @@ export const themes: ThemePreset[] = [
     galleryStyle: "grid",
     servicesStyle: "icons-only",
     servicesLayout: "cards",
+    heroLayout: "centered",
+    faqLayout: "accordion",
+    processLayout: "grid",
+    aboutLayout: "split",
     variables: {
       "--background": "210 20% 98%",
       "--foreground": "215 30% 12%",
@@ -111,6 +127,10 @@ export const themes: ThemePreset[] = [
     galleryStyle: "masonry",
     servicesStyle: "icons-only",
     servicesLayout: "cards",
+    heroLayout: "centered",
+    faqLayout: "accordion",
+    processLayout: "grid",
+    aboutLayout: "split",
     variables: {
       "--background": "225 35% 7%",
       "--foreground": "42 25% 88%",
