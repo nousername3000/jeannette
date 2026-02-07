@@ -3,6 +3,7 @@ export type ImageStyle = "rounded" | "square" | "circle";
 export type ButtonStyle = "solid" | "pill" | "soft";
 export type SectionSpacing = "compact" | "comfortable" | "spacious";
 export type HeroStyle = "image" | "animated" | "gradient";
+export type GalleryStyle = "masonry" | "grid";
 
 export interface ThemePreset {
   id: string;
@@ -15,6 +16,7 @@ export interface ThemePreset {
   buttonStyle: ButtonStyle;
   sectionSpacing: SectionSpacing;
   heroStyle: HeroStyle;
+  galleryStyle: GalleryStyle;
 }
 
 export const themes: ThemePreset[] = [
@@ -28,6 +30,7 @@ export const themes: ThemePreset[] = [
     heroStyle: "image",
     buttonStyle: "solid",
     sectionSpacing: "comfortable",
+    galleryStyle: "masonry",
     variables: {
       "--background": "35 40% 95%",
       "--foreground": "25 30% 15%",
@@ -62,6 +65,7 @@ export const themes: ThemePreset[] = [
     heroStyle: "gradient",
     buttonStyle: "pill",
     sectionSpacing: "comfortable",
+    galleryStyle: "grid",
     variables: {
       "--background": "210 20% 98%",
       "--foreground": "215 30% 12%",
@@ -96,6 +100,7 @@ export const themes: ThemePreset[] = [
     heroStyle: "animated",
     buttonStyle: "soft",
     sectionSpacing: "spacious",
+    galleryStyle: "masonry",
     variables: {
       "--background": "225 35% 7%",
       "--foreground": "42 25% 88%",

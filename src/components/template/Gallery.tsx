@@ -106,7 +106,7 @@ function Lightbox({
 
 export function Gallery() {
   const { ref: containerRef, revealed } = useScrollReveal();
-  const { imageStyle, sectionSpacing } = useTheme();
+  const { imageStyle, sectionSpacing, galleryStyle } = useTheme();
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const openLightbox = (i: number) => setLightboxIndex(i);
@@ -133,23 +133,43 @@ export function Gallery() {
             </p>
           </div>
 
-          {/* Masonry-style grid */}
-          <div className="columns-2 md:columns-3 gap-4 space-y-4">
-            {images.map((img, i) => (
-              <button
-                key={i}
-                onClick={() => openLightbox(i)}
-                className={`block w-full break-inside-avoid group cursor-pointer reveal reveal-delay-${Math.min(i + 1, 5)} ${getImageClasses(imageStyle)}`}
-              >
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                />
-              </button>
-            ))}
-          </div>
+          {galleryStyle === "masonry" ? (
+            /* Masonry layout */
+            <div className="columns-2 md:columns-3 gap-4 space-y-4">
+              {images.map((img, i) => (
+                <button
+                  key={i}
+                  onClick={() => openLightbox(i)}
+                  className={`block w-full break-inside-avoid group cursor-pointer reveal reveal-delay-${Math.min(i + 1, 5)} ${getImageClasses(imageStyle)}`}
+                >
+                  <img
+                    src={img.src}
+                    alt={img.alt}
+                    className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </button>
+              ))}
+            </div>
+          ) : (
+            /* Uniform grid layout */
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              {images.map((img, i) => (
+                <button
+                  key={i}
+                  onClick={() => openLightbox(i)}
+                  className={`group cursor-pointer aspect-[4/3] reveal reveal-delay-${Math.min(i + 1, 5)} ${getImageClasses(imageStyle)}`}
+                >
+                  <img
+                    src={img.src}
+                    alt={img.alt}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
