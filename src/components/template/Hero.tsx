@@ -110,14 +110,36 @@ function LayoutBold({ buttonStyle }: { buttonStyle: string }) {
   );
 }
 
+/* ── Layout 5: Compact (not full-height, photo background) ── */
+function LayoutCompact({ buttonStyle }: { buttonStyle: string }) {
+  return (
+    <div className="relative z-10 mx-auto max-w-4xl px-6 text-center py-20 md:py-28">
+      <p className="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground">
+        Certified Clinical Hypnotherapist
+      </p>
+      <h1 className="font-display text-5xl md:text-7xl font-bold leading-tight text-foreground mb-6">
+        Find Your
+        <br />
+        <span className="text-primary">Inner Calm</span>
+      </h1>
+      <p className="mx-auto max-w-2xl text-lg md:text-xl text-muted-foreground leading-relaxed mb-10">
+        Gentle, evidence-based hypnotherapy to help you release anxiety,
+        overcome limiting beliefs, and reclaim the peaceful life you deserve.
+      </p>
+      <HeroCTA buttonStyle={buttonStyle} />
+    </div>
+  );
+}
+
 const layouts: Record<HeroLayout, React.FC<{ buttonStyle: string }>> = {
   centered: LayoutCentered,
   split: LayoutSplit,
   minimal: LayoutMinimal,
   bold: LayoutBold,
+  compact: LayoutCompact,
 };
 
-/* ── Background variants (unchanged) ── */
+/* ── Background variants ── */
 function HeroImage() {
   return (
     <div className="absolute inset-0">
@@ -156,12 +178,13 @@ const backgrounds: Record<HeroStyle, () => JSX.Element> = {
 export function Hero({ variant }: { variant?: HeroStyle }) {
   const { buttonStyle, heroStyle, heroLayout } = useTheme();
   const style = variant ?? heroStyle;
-  const Background = backgrounds[style];
+  const isCompact = heroLayout === "compact";
+  const Background = backgrounds[isCompact ? "image" : style];
   const Layout = layouts[heroLayout];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <Background />
+    <section className={`relative ${isCompact ? "" : "min-h-screen"} flex items-center justify-center overflow-hidden`}>
+      {isCompact ? <HeroImage /> : <Background />}
       <Layout buttonStyle={buttonStyle} />
     </section>
   );
