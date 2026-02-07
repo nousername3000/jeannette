@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Palette, X } from "lucide-react";
 import { themes, CardStyle, ImageStyle, ButtonStyle, SectionSpacing, HeroStyle } from "@/lib/themes";
+import { fontPairings } from "@/lib/fontPairings";
+import { colorSchemes } from "@/lib/colorSchemes";
 import { useTheme } from "@/contexts/ThemeContext";
 
 const cardOptions: { value: CardStyle; label: string }[] = [
@@ -69,14 +71,29 @@ function StyleRow<T extends string>({
   );
 }
 
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="flex items-center gap-2 mb-2">
+      <span className="text-[10px] font-semibold text-primary uppercase tracking-widest">{children}</span>
+      <div className="flex-1 h-px bg-border" />
+    </div>
+  );
+}
+
 export function ThemeSwitcher() {
   const [open, setOpen] = useState(false);
-  const { themeId, setThemeId, cardStyle, imageStyle, buttonStyle, sectionSpacing, heroStyle, overrides, setOverrides } = useTheme();
+  const {
+    themeId, setThemeId,
+    cardStyle, imageStyle, buttonStyle, sectionSpacing, heroStyle,
+    overrides, setOverrides,
+    fontPairingId, setFontPairingId,
+    colorSchemeId, setColorSchemeId,
+  } = useTheme();
 
   return (
     <div className="fixed bottom-6 right-6 z-[100]">
       {open && (
-        <div className="mb-3 rounded-[var(--radius)] border border-border bg-card shadow-theme-lg p-4 w-72 max-h-[80vh] overflow-y-auto animate-in fade-in slide-in-from-bottom-2">
+        <div className="mb-3 rounded-[var(--radius)] border border-border bg-card shadow-theme-lg p-4 w-80 max-h-[80vh] overflow-y-auto animate-in fade-in slide-in-from-bottom-2">
           <div className="flex items-center justify-between mb-3">
             <span className="font-display text-sm font-semibold text-card-foreground">
               Design Studio
@@ -112,8 +129,78 @@ export function ThemeSwitcher() {
 
           <div className="h-px bg-border mb-4" />
 
+          {/* Color Schemes */}
+          <div className="mb-4">
+            <SectionLabel>Color Scheme</SectionLabel>
+            <div className="grid grid-cols-2 gap-1.5">
+              {colorSchemes.map((cs) => (
+                <button
+                  key={cs.id}
+                  onClick={() => setColorSchemeId(cs.id)}
+                  className={`flex items-center gap-2 px-2.5 py-2 rounded-[var(--radius)] text-xs transition-colors ${
+                    colorSchemeId === cs.id
+                      ? "bg-primary/10 text-foreground font-medium ring-1 ring-primary/30"
+                      : "bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground"
+                  }`}
+                >
+                  <div className="flex -space-x-1 shrink-0">
+                    <span
+                      className="w-3.5 h-3.5 rounded-full border border-background"
+                      style={{ backgroundColor: cs.preview.primary }}
+                    />
+                    <span
+                      className="w-3.5 h-3.5 rounded-full border border-background"
+                      style={{ backgroundColor: cs.preview.secondary }}
+                    />
+                    <span
+                      className="w-3.5 h-3.5 rounded-full border border-background"
+                      style={{ backgroundColor: cs.preview.accent }}
+                    />
+                  </div>
+                  <span className="truncate">{cs.name}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="h-px bg-border mb-4" />
+
+          {/* Font Selector */}
+          <div className="mb-4">
+            <SectionLabel>Typography</SectionLabel>
+            <div className="space-y-1">
+              {fontPairings.map((fp) => (
+                <button
+                  key={fp.id}
+                  onClick={() => setFontPairingId(fp.id)}
+                  className={`w-full text-left px-3 py-2 rounded-[var(--radius)] text-sm transition-colors ${
+                    fontPairingId === fp.id
+                      ? "bg-primary/10 text-foreground font-medium ring-1 ring-primary/30"
+                      : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                  }`}
+                >
+                  <span
+                    className="block text-sm"
+                    style={{ fontFamily: fp.display }}
+                  >
+                    {fp.name}
+                  </span>
+                  <span
+                    className="block text-[10px] mt-0.5 opacity-60"
+                    style={{ fontFamily: fp.body }}
+                  >
+                    Body text preview
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="h-px bg-border mb-4" />
+
           {/* Style overrides */}
           <div className="space-y-3">
+            <SectionLabel>Component Styles</SectionLabel>
             <StyleRow
               label="Hero"
               options={heroOptions}
