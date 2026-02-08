@@ -48,4 +48,28 @@ export const fontPairings: FontPairing[] = [
     display: "'Crimson Pro', serif",
     body: "'Work Sans', sans-serif",
   },
+  {
+    id: "space-grotesk",
+    name: "Space Grotesk + Outfit",
+    display: "'Space Grotesk', sans-serif",
+    body: "'Outfit', sans-serif",
+  },
+  {
+    id: "sora-dm",
+    name: "Sora + DM Sans",
+    display: "'Sora', sans-serif",
+    body: "'DM Sans', sans-serif",
+  },
+  {
+    id: "cabinet-satoshi",
+    name: "Urbanist + Manrope",
+    display: "'Urbanist', sans-serif",
+    body: "'Manrope', sans-serif",
+  },
+  {
+    id: "poppins-karla",
+    name: "Poppins + Karla",
+    display: "'Poppins', sans-serif",
+    body: "'Karla', sans-serif",
+  },
 ];
