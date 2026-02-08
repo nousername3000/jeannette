@@ -1,5 +1,6 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useTheme } from "@/contexts/ThemeContext";
+import aboutPhoto from "@/assets/about-photo.jpg";
 import { Award, GraduationCap, Heart } from "lucide-react";
 import { getCardClasses, getCardHoverClasses, getImageClasses, getSectionPadding } from "@/lib/themeStyles";
 import type { AboutLayout } from "@/lib/themes";
@@ -39,10 +40,8 @@ function AboutContent({ layout, imageStyle, cardStyle }: { layout: AboutLayout; 
 
 function Avatar({ className = "w-72 h-72 md:w-80 md:h-80", imageStyle }: { className?: string; imageStyle?: string }) {
   return (
-    <div className={`${className} bg-secondary shadow-theme-lg ${imageStyle ? getImageClasses(imageStyle as any) : "rounded-[var(--radius)]"}`}>
-      <div className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-        <span className="font-display text-6xl text-primary/40">JK</span>
-      </div>
+    <div className={`${className} overflow-hidden shadow-theme-lg ${imageStyle ? getImageClasses(imageStyle as any) : "rounded-[var(--radius)]"}`}>
+      <img src={aboutPhoto} alt="Jeannette Kühnel" className="w-full h-full object-cover" />
     </div>
   );
 }
