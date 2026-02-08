@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
-import { themes, ThemePreset, CardStyle, ImageStyle, ButtonStyle, SectionSpacing, HeroStyle, HeroLayout, GalleryStyle, ServicesStyle, ServicesLayout, FAQLayout, ProcessLayout, AboutLayout } from "@/lib/themes";
+import { themes, ThemePreset, CardStyle, ImageStyle, ButtonStyle, SectionSpacing, HeroStyle, HeroLayout, GalleryStyle, ServicesStyle, ServicesLayout, FAQLayout, ProcessLayout, AboutLayout, NavLogoMode } from "@/lib/themes";
 import { fontPairings, FontPairing } from "@/lib/fontPairings";
 import { colorSchemes, ColorScheme } from "@/lib/colorSchemes";
 
@@ -16,6 +16,7 @@ interface StyleOverrides {
   faqLayout?: FAQLayout;
   processLayout?: ProcessLayout;
   aboutLayout?: AboutLayout;
+  navLogoMode?: NavLogoMode;
 }
 
 interface ThemeContextValue {
@@ -34,6 +35,7 @@ interface ThemeContextValue {
   faqLayout: FAQLayout;
   processLayout: ProcessLayout;
   aboutLayout: AboutLayout;
+  navLogoMode: NavLogoMode;
   overrides: StyleOverrides;
   setOverrides: (o: StyleOverrides) => void;
   fontPairingId: string;
@@ -104,12 +106,13 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const faqLayout = overrides.faqLayout ?? theme.faqLayout;
   const processLayout = overrides.processLayout ?? theme.processLayout;
   const aboutLayout = overrides.aboutLayout ?? theme.aboutLayout;
+  const navLogoMode = overrides.navLogoMode ?? theme.navLogoMode;
 
   return (
     <ThemeContext.Provider
       value={{
         themeId, setThemeId, theme,
-        cardStyle, imageStyle, buttonStyle, sectionSpacing, heroStyle, heroLayout, galleryStyle, servicesStyle, servicesLayout, faqLayout, processLayout, aboutLayout,
+        cardStyle, imageStyle, buttonStyle, sectionSpacing, heroStyle, heroLayout, galleryStyle, servicesStyle, servicesLayout, faqLayout, processLayout, aboutLayout, navLogoMode,
         overrides, setOverrides,
         fontPairingId, setFontPairingId, fontPairing,
         colorSchemeId, setColorSchemeId, colorScheme,
