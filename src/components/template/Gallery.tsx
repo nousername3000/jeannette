@@ -12,12 +12,12 @@ import gallery5 from "@/assets/gallery/gallery-5.jpg";
 import gallery6 from "@/assets/gallery/gallery-6.jpg";
 
 const images = [
-  { src: gallery1, alt: "Therapy room", caption: "Our welcoming therapy space" },
-  { src: gallery2, alt: "Meditation space", caption: "Group meditation sessions" },
-  { src: gallery3, alt: "Herbal tea", caption: "Complimentary herbal tea" },
-  { src: gallery4, alt: "Garden courtyard", caption: "Peaceful garden courtyard" },
-  { src: gallery5, alt: "Certifications", caption: "Professional certifications" },
-  { src: gallery6, alt: "Waiting room", caption: "Comfortable waiting area" },
+  { src: gallery1, alt: "Lerntherapie-Raum", caption: "Unser einladender Therapieraum" },
+  { src: gallery2, alt: "Lernmaterialien", caption: "Kreative Lernmaterialien für jede Sitzung" },
+  { src: gallery3, alt: "Kinder beim Lernen", caption: "Gemeinsam lernen macht Spaß" },
+  { src: gallery4, alt: "Buchstaben lernen", caption: "Spielerisch Buchstaben entdecken" },
+  { src: gallery5, alt: "Lernerfolg feiern", caption: "Erfolge gemeinsam feiern" },
+  { src: gallery6, alt: "Wartebereich", caption: "Gemütlicher Wartebereich" },
 ];
 
 function Lightbox({
@@ -122,14 +122,14 @@ export function Gallery() {
         <div className={`mx-auto max-w-6xl px-6 ${revealed ? "revealed" : ""}`} ref={containerRef}>
           <div className="text-center mb-12 reveal">
             <span className="text-sm font-medium text-primary tracking-widest uppercase">
-              Gallery
+              Galerie
             </span>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mt-3">
-              The Space & Experience
+              Einblicke in die Praxis
             </h2>
             <p className="mt-4 max-w-xl mx-auto text-muted-foreground">
-              Take a peek inside the practice and the calming environment that
-              awaits you.
+              Ein kleiner Blick in unsere Räume und die entspannte Atmosphäre,
+              die Euch erwartet.
             </p>
           </div>
 
