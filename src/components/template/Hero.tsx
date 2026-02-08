@@ -68,9 +68,9 @@ function LayoutSplit({ buttonStyle }: { buttonStyle: string }) {
           <HeroCTA buttonStyle={buttonStyle} />
         </div>
       </div>
-      <div className="hidden md:flex justify-center">
-        <div className="w-80 h-80 rounded-[var(--radius)] overflow-hidden shadow-theme-lg">
-          <img src={heroSplitPhoto} alt="Jeannette Kühnel" className="w-full h-full object-cover" />
+      <div className="hidden md:flex justify-center items-center">
+        <div className="w-full max-w-md aspect-[4/3] rounded-[var(--radius)] overflow-hidden shadow-theme-lg">
+          <img src={heroSplitPhoto} alt="Jeannette Kühnel" className="w-full h-full object-cover object-top" />
         </div>
       </div>
     </div>
