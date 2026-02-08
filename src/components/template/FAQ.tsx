@@ -7,28 +7,28 @@ import type { FAQLayout } from "@/lib/themes";
 
 const faqs = [
   {
-    q: "What is hypnotherapy and how does it work?",
-    a: "Hypnotherapy uses guided relaxation and focused attention to reach a heightened state of awareness, sometimes called a trance. In this state, your mind is more open to positive suggestions and can address deep-seated patterns of thought and behaviour.",
+    q: "Wie erkenne ich, ob mein Kind eine Lernstörung hat?",
+    a: "Typische Anzeichen sind anhaltende Schwierigkeiten beim Lesen, Schreiben oder Rechnen trotz regelmäßigem Üben, Vermeidungsverhalten, sinkende Motivation und emotionale Belastung. In einem kostenlosen Erstgespräch können wir gemeinsam herausfinden, wo Euer Kind steht.",
   },
   {
-    q: "Is hypnotherapy safe?",
-    a: "Absolutely. Hypnotherapy is a well-established, evidence-based practice. You remain fully in control throughout every session. It's a collaborative process — I simply guide you into a deeply relaxed state where change becomes easier.",
+    q: "Wie läuft eine Lerntherapie ab?",
+    a: "Zunächst analysiere ich den aktuellen Entwicklungsstand Eures Kindes. Darauf aufbauend erstelle ich einen individuellen Förderplan mit gezielten Übungen. Die Sitzungen finden regelmäßig statt — online oder vor Ort — und werden laufend angepasst.",
   },
   {
-    q: "How many sessions will I need?",
-    a: "Most clients see meaningful results within 3–6 sessions. Some concerns, like phobias or single-event issues, may resolve in as few as 1–2 sessions. We'll discuss a personalised plan during your free consultation.",
+    q: "Wie viele Sitzungen sind nötig?",
+    a: "Das hängt von der individuellen Situation ab. Manche Kinder zeigen schon nach wenigen Wochen deutliche Fortschritte, andere brauchen eine längere Begleitung. Im Erstgespräch besprechen wir eine realistische Einschätzung.",
   },
   {
-    q: "What can hypnotherapy help with?",
-    a: "Common areas include anxiety and stress management, smoking cessation, weight management, phobias, sleep issues, confidence building, and pain management. If you're unsure whether your concern is a fit, reach out for a free chat.",
+    q: "Bieten Sie auch Online-Sitzungen an?",
+    a: "Ja! Online-Lerntherapie ist genauso wirksam wie Präsenzsitzungen. Alles was Ihr braucht, ist ein ruhiger Platz, einen Computer und eine stabile Internetverbindung.",
   },
   {
-    q: "What happens during a session?",
-    a: "Each session begins with a conversation about your progress, followed by a guided hypnosis experience lasting 20–30 minutes. You'll feel deeply relaxed — many clients describe it as the most restful experience they've ever had.",
+    q: "Was unterscheidet Lerntherapie von Nachhilfe?",
+    a: "Nachhilfe wiederholt den Schulstoff. Lerntherapie setzt tiefer an: Ich arbeite an den grundlegenden Fähigkeiten, die das Lernen erst ermöglichen — wie Lesen, Schreiben und Rechnen — und stärke gleichzeitig das Selbstvertrauen Eures Kindes.",
   },
   {
-    q: "Do you offer online sessions?",
-    a: "Yes! Online hypnotherapy is just as effective as in-person sessions. All you need is a quiet space, a comfortable seat, and a stable internet connection. I offer sessions via Zoom worldwide.",
+    q: "Können auch Eltern an den Sitzungen teilnehmen?",
+    a: "Auf jeden Fall! Die Einbindung der Eltern ist mir sehr wichtig. Ich zeige Euch, wie Ihr Euer Kind zuhause sinnvoll begleiten könnt — ohne Stress und Streit.",
   },
 ];
 
@@ -41,9 +41,9 @@ export function FAQ() {
       <div className={`mx-auto max-w-5xl px-6 ${revealed ? "revealed" : ""}`} ref={containerRef}>
         <div className="text-center mb-12 reveal">
           <span className="text-sm font-medium text-primary tracking-widest uppercase">FAQ</span>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mt-3">Common Questions</h2>
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mt-3">Häufige Fragen</h2>
           <p className="mt-4 max-w-xl mx-auto text-muted-foreground">
-            Everything you need to know before your first session.
+            Alles, was Du wissen solltest, bevor wir starten.
           </p>
         </div>
 

@@ -8,27 +8,34 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <h3 className="font-display text-xl font-bold text-card-foreground mb-3">
-              Sarah Mitchell
+              Jeannette Kühnel
             </h3>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
-              Certified clinical hypnotherapist helping individuals unlock
-              their potential and find lasting peace since 2009.
+              Familienberaterin & Lerntherapeutin — ich begleite Familien und
+              ihre Kinder auf dem Weg zu mehr Leichtigkeit im Schulalltag.
             </p>
           </div>
 
           {/* Quick links */}
           <div>
             <h4 className="font-display text-sm font-semibold text-card-foreground mb-4 uppercase tracking-wider">
-              Quick Links
+              Navigation
             </h4>
             <ul className="space-y-2">
-              {["About", "Services", "Process", "Testimonials", "FAQ", "Contact"].map((l) => (
-                <li key={l}>
+              {[
+                { label: "Über mich", href: "about" },
+                { label: "Angebote", href: "services" },
+                { label: "Ablauf", href: "process" },
+                { label: "Erfahrungen", href: "testimonials" },
+                { label: "FAQ", href: "faq" },
+                { label: "Kontakt", href: "contact" },
+              ].map((l) => (
+                <li key={l.href}>
                   <a
-                    href={`#${l.toLowerCase()}`}
+                    href={`#${l.href}`}
                     className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                   >
-                    {l}
+                    {l.label}
                   </a>
                 </li>
               ))}
@@ -38,28 +45,27 @@ export function Footer() {
           {/* Contact */}
           <div>
             <h4 className="font-display text-sm font-semibold text-card-foreground mb-4 uppercase tracking-wider">
-              Contact
+              Kontakt
             </h4>
             <ul className="space-y-3">
               <li className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Mail className="w-4 h-4 text-primary" />
-                hello@sarahmitchell.com
+                info@jeannette-kuehnel.de
               </li>
               <li className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Phone className="w-4 h-4 text-primary" />
-                +44 20 7946 0958
+                +49 (0) 30 123 456 78
               </li>
               <li className="flex items-center gap-2 text-sm text-muted-foreground">
                 <MapPin className="w-4 h-4 text-primary" />
-                London, UK
+                Berlin, Deutschland
               </li>
             </ul>
           </div>
         </div>
 
         <div className="mt-12 pt-6 border-t border-border text-center text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Sarah Mitchell Hypnotherapy. All rights
-          reserved.
+          © {new Date().getFullYear()} Jeannette Kühnel — Familienberatung & Lerntherapie. Alle Rechte vorbehalten.
         </div>
       </div>
     </footer>

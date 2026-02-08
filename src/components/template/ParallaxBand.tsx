@@ -51,10 +51,10 @@ export function ParallaxBand() {
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-3xl px-6 text-center">
         <p className="font-display text-2xl md:text-4xl font-bold text-background leading-snug">
-          "The mind is everything. What you think, you become."
+          „Unbehandelte Lernprobleme haben immer Auswirkungen auf das eigene Selbstbild: Betroffene halten sich für dumm, trauen sich immer weniger zu."
         </p>
         <span className="mt-6 inline-block text-sm tracking-widest uppercase text-background/70">
-          — Buddha
+          — Prof. Schulte-Markwort
         </span>
       </div>
     </section>

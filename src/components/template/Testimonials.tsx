@@ -6,23 +6,23 @@ import { getCardClasses, getSectionPadding } from "@/lib/themeStyles";
 const testimonials = [
   {
     quote:
-      "After just three sessions, my lifelong anxiety felt manageable for the first time. Sarah has a gift for making you feel completely safe and understood.",
-    name: "Emily R.",
-    role: "Anxiety & Stress",
+      "Dank Jeannette hat unser Sohn endlich wieder Freude am Schreiben gefunden. Die täglichen Kämpfe bei den Hausaufgaben gehören der Vergangenheit an.",
+    name: "Sandra M.",
+    role: "Mutter eines 8-Jährigen",
     stars: 5,
   },
   {
     quote:
-      "I was sceptical about hypnotherapy, but Sarah's professional, science-backed approach won me over. I quit smoking in two sessions and haven't looked back.",
-    name: "James T.",
-    role: "Smoking Cessation",
+      "Ich war skeptisch, ob Online-Sitzungen funktionieren — aber nach nur wenigen Wochen hat sich das Schriftbild meiner Tochter merklich verbessert. Absolut empfehlenswert!",
+    name: "Thomas K.",
+    role: "Vater einer 10-Jährigen",
     stars: 5,
   },
   {
     quote:
-      "The confidence I've gained through our sessions has transformed my career and personal life. I can't recommend Sarah highly enough.",
-    name: "Priya K.",
-    role: "Confidence Building",
+      "Jeannette versteht es wie keine andere, Kinder dort abzuholen, wo sie stehen. Unser Kind geht jetzt wieder gerne zur Schule.",
+    name: "Nina L.",
+    role: "Mutter eines 7-Jährigen",
     stars: 5,
   },
 ];
@@ -36,10 +36,10 @@ export function Testimonials() {
       <div ref={ref} className={`mx-auto max-w-6xl px-6 ${revealed ? "revealed" : ""}`}>
         <div className={`text-center mb-16 reveal`}>
           <p className="text-sm font-medium uppercase tracking-[0.15em] text-primary mb-3">
-            Testimonials
+            Erfahrungsberichte
           </p>
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Stories of Transformation
+            Das sagen Eltern
           </h2>
         </div>
 

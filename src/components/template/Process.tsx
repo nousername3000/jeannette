@@ -6,23 +6,23 @@ import type { ProcessLayout } from "@/lib/themes";
 const steps = [
   {
     number: "01",
-    title: "Free Consultation",
-    description: "We start with a no-obligation call to understand your goals and see if we're the right fit.",
+    title: "Kostenloses Erstgespräch",
+    description: "Wir sprechen über Eure Situation und finden gemeinsam heraus, wie ich Euch am besten unterstützen kann.",
   },
   {
     number: "02",
-    title: "Personalised Plan",
-    description: "I create a tailored hypnotherapy programme designed specifically around your unique needs.",
+    title: "Analyse & Diagnose",
+    description: "Ich analysiere den Entwicklungsstand Eures Kindes und identifiziere die Faktoren, die den Lernerfolg blockieren.",
   },
   {
     number: "03",
-    title: "Deep Sessions",
-    description: "Experience guided hypnosis in a safe, comfortable setting — in person or online.",
+    title: "Individuelle Begleitung",
+    description: "Mit maßgeschneiderten Übungen und Konzepten begleite ich Euer Kind Schritt für Schritt — online oder vor Ort.",
   },
   {
     number: "04",
-    title: "Lasting Change",
-    description: "Walk away with tools and techniques for lasting transformation and continued growth.",
+    title: "Nachhaltige Veränderung",
+    description: "Euer Kind gewinnt Selbstvertrauen zurück und Ihr erlebt wieder mehr Leichtigkeit im Familien- und Schulalltag.",
   },
 ];
 
@@ -34,10 +34,10 @@ export function Process() {
     <section id="process" className={`${getSectionPadding(sectionSpacing)} bg-muted/40`}>
       <div ref={ref} className={`mx-auto max-w-6xl px-6 ${revealed ? "revealed" : ""}`}>
         <div className="text-center mb-16 reveal">
-          <p className="text-sm font-medium uppercase tracking-[0.15em] text-primary mb-3">How It Works</p>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">Your Journey to Change</h2>
+          <p className="text-sm font-medium uppercase tracking-[0.15em] text-primary mb-3">So funktioniert's</p>
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">Euer Weg zur Veränderung</h2>
           <p className="mx-auto max-w-2xl text-muted-foreground">
-            A clear, supportive process from first conversation to lasting transformation.
+            Ein klarer, unterstützender Prozess — vom ersten Gespräch bis zur nachhaltigen Veränderung.
           </p>
         </div>
 
@@ -79,9 +79,7 @@ function GridLayout() {
 function TimelineLayout() {
   return (
     <div className="relative max-w-2xl mx-auto">
-      {/* Vertical line */}
       <div className="absolute left-6 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-0.5 bg-border" />
-
       {steps.map((step, i) => (
         <div
           key={step.number}
@@ -89,10 +87,7 @@ function TimelineLayout() {
             i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
           }`}
         >
-          {/* Dot */}
           <div className="absolute left-6 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-primary border-2 border-background z-10 mt-1.5" />
-
-          {/* Content */}
           <div className={`ml-14 md:ml-0 md:w-[calc(50%-2rem)] ${i % 2 === 0 ? "md:pr-8 md:text-right" : "md:pl-8"}`}>
             <span className="text-xs font-bold text-primary uppercase tracking-widest">{step.number}</span>
             <h3 className="font-display text-lg font-semibold text-foreground mt-1">{step.title}</h3>

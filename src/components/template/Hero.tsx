@@ -15,13 +15,13 @@ function HeroCTA({ buttonStyle }: { buttonStyle: string }) {
         href="#contact"
         className={`inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold shadow-theme ${btnClasses}`}
       >
-        Book Your Free Consultation
+        Kostenloses Erstgespräch
       </a>
       <a
         href="#services"
         className={`inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold ${outlineBtnClasses}`}
       >
-        Explore Services
+        Meine Angebote
       </a>
     </div>
   );
@@ -32,16 +32,16 @@ function LayoutCentered({ buttonStyle }: { buttonStyle: string }) {
   return (
     <div className="relative z-10 mx-auto max-w-4xl px-6 text-center py-32">
       <p className="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground">
-        Certified Clinical Hypnotherapist
+        Familienberaterin & Lerntherapeutin
       </p>
       <h1 className="font-display text-5xl md:text-7xl font-bold leading-tight text-foreground mb-6">
-        Find Your
+        Raus aus dem
         <br />
-        <span className="text-primary">Inner Calm</span>
+        <span className="text-primary">Schulfrust</span>
       </h1>
       <p className="mx-auto max-w-2xl text-lg md:text-xl text-muted-foreground leading-relaxed mb-10">
-        Gentle, evidence-based hypnotherapy to help you release anxiety,
-        overcome limiting beliefs, and reclaim the peaceful life you deserve.
+        Ich begleite Familien und ihre Kinder mit Schulproblemen, Lernstörungen
+        und Schulangst — hin zu mehr Leichtigkeit, Klarheit und Sicherheit.
       </p>
       <HeroCTA buttonStyle={buttonStyle} />
     </div>
@@ -54,14 +54,14 @@ function LayoutSplit({ buttonStyle }: { buttonStyle: string }) {
     <div className="relative z-10 mx-auto max-w-6xl px-6 py-24 md:py-32 grid md:grid-cols-2 gap-12 items-center">
       <div>
         <p className="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground">
-          Certified Clinical Hypnotherapist
+          Familienberaterin & Lerntherapeutin
         </p>
         <h1 className="font-display text-4xl md:text-6xl font-bold leading-tight text-foreground mb-6">
-          Find Your <span className="text-primary">Inner Calm</span>
+          Raus aus dem <span className="text-primary">Schulfrust</span>
         </h1>
         <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-          Gentle, evidence-based hypnotherapy to help you release anxiety,
-          overcome limiting beliefs, and reclaim the peaceful life you deserve.
+          Ich begleite Familien und ihre Kinder mit Schulproblemen, Lernstörungen
+          und Schulangst — hin zu mehr Leichtigkeit, Klarheit und Sicherheit.
         </p>
         <div className="flex flex-col sm:flex-row gap-4">
           <HeroCTA buttonStyle={buttonStyle} />
@@ -76,34 +76,34 @@ function LayoutSplit({ buttonStyle }: { buttonStyle: string }) {
   );
 }
 
-/* ── Layout 3: Minimal (stripped back, just headline + CTA) ── */
+/* ── Layout 3: Minimal ── */
 function LayoutMinimal({ buttonStyle }: { buttonStyle: string }) {
   return (
     <div className="relative z-10 mx-auto max-w-3xl px-6 text-center py-40 md:py-48">
       <h1 className="font-display text-6xl md:text-8xl font-bold leading-[0.95] text-foreground mb-8">
-        Inner <span className="text-primary">Calm</span>
+        Mehr <span className="text-primary">Leichtigkeit</span>
       </h1>
       <p className="text-lg text-muted-foreground mb-10">
-        Clinical hypnotherapy for lasting change.
+        Familienberatung & Lerntherapie für ein entspanntes Schulleben.
       </p>
       <HeroCTA buttonStyle={buttonStyle} />
     </div>
   );
 }
 
-/* ── Layout 4: Bold (oversized typography, asymmetric) ── */
+/* ── Layout 4: Bold ── */
 function LayoutBold({ buttonStyle }: { buttonStyle: string }) {
   return (
     <div className="relative z-10 mx-auto max-w-6xl px-6 py-24 md:py-32">
       <p className="mb-6 text-sm font-medium uppercase tracking-[0.2em] text-primary">
-        Certified Clinical Hypnotherapist
+        Familienberaterin & Lerntherapeutin
       </p>
       <h1 className="font-display text-6xl md:text-[8rem] font-bold leading-[0.9] text-foreground mb-8 max-w-4xl">
-        Find Your <span className="text-primary">Inner Calm</span>
+        Raus aus dem <span className="text-primary">Schulfrust</span>
       </h1>
       <div className="flex flex-col md:flex-row md:items-end gap-8 md:gap-16">
         <p className="text-lg text-muted-foreground leading-relaxed max-w-md">
-          Gentle, evidence-based hypnotherapy to help you release anxiety and reclaim the peaceful life you deserve.
+          Ich begleite Familien mit Schulproblemen und Lernstörungen zurück zu Leichtigkeit und Selbstvertrauen.
         </p>
         <HeroCTA buttonStyle={buttonStyle} />
       </div>
@@ -111,21 +111,21 @@ function LayoutBold({ buttonStyle }: { buttonStyle: string }) {
   );
 }
 
-/* ── Layout 5: Compact (not full-height, photo background) ── */
+/* ── Layout 5: Compact ── */
 function LayoutCompact({ buttonStyle }: { buttonStyle: string }) {
   return (
     <div className="relative z-10 mx-auto max-w-4xl px-6 text-center py-20 md:py-28">
       <p className="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground">
-        Certified Clinical Hypnotherapist
+        Familienberaterin & Lerntherapeutin
       </p>
       <h1 className="font-display text-5xl md:text-7xl font-bold leading-tight text-foreground mb-6">
-        Find Your
+        Raus aus dem
         <br />
-        <span className="text-primary">Inner Calm</span>
+        <span className="text-primary">Schulfrust</span>
       </h1>
       <p className="mx-auto max-w-2xl text-lg md:text-xl text-muted-foreground leading-relaxed mb-10">
-        Gentle, evidence-based hypnotherapy to help you release anxiety,
-        overcome limiting beliefs, and reclaim the peaceful life you deserve.
+        Ich begleite Familien und ihre Kinder mit Schulproblemen, Lernstörungen
+        und Schulangst — hin zu mehr Leichtigkeit, Klarheit und Sicherheit.
       </p>
       <HeroCTA buttonStyle={buttonStyle} />
     </div>

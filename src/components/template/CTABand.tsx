@@ -1,6 +1,5 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useTheme } from "@/contexts/ThemeContext";
-import { getOutlineButtonClasses } from "@/lib/themeStyles";
 
 export function CTABand() {
   const { ref, revealed } = useScrollReveal();
@@ -13,11 +12,11 @@ export function CTABand() {
         className={`mx-auto max-w-4xl px-6 text-center reveal ${revealed ? "revealed visible" : ""}`}
       >
         <h2 className="font-display text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
-          Ready to Begin Your Transformation?
+          Bereit für mehr Leichtigkeit?
         </h2>
         <p className="text-primary-foreground/80 text-lg mb-8 max-w-2xl mx-auto">
-          Your first consultation is completely free. Let's talk about what
-          you'd like to change — no pressure, no commitment.
+          Euer kostenloses Erstgespräch ist der erste Schritt. Lass uns gemeinsam
+          herausfinden, wie ich Euch unterstützen kann — ganz unverbindlich.
         </p>
         <a
           href="#contact"
@@ -27,7 +26,7 @@ export function CTABand() {
               : "rounded-[var(--radius)] bg-background text-foreground hover:opacity-90 transition-opacity"
           }`}
         >
-          Book Your Free Call
+          Kostenloses Erstgespräch buchen
         </a>
       </div>
     </section>
