@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getButtonClasses } from "@/lib/themeStyles";
+import logoPlaceholder from "@/assets/logo-placeholder.svg";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -15,7 +16,7 @@ const navLinks = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { buttonStyle } = useTheme();
+  const { buttonStyle, navLogoMode } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -32,8 +33,12 @@ export function Navbar() {
       }`}
     >
       <div className="mx-auto max-w-6xl flex items-center justify-between px-6 py-4">
-        <a href="#" className="font-display text-xl font-bold text-foreground">
-          Sarah Mitchell
+        <a href="#" className="flex items-center">
+          {navLogoMode === "logo" ? (
+            <img src={logoPlaceholder} alt="Logo" className="h-8 w-auto" />
+          ) : (
+            <span className="font-display text-xl font-bold text-foreground">Sarah Mitchell</span>
+          )}
         </a>
 
         {/* Desktop nav */}

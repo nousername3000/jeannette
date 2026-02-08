@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Palette, X } from "lucide-react";
-import { themes, CardStyle, ImageStyle, ButtonStyle, SectionSpacing, HeroStyle, HeroLayout, GalleryStyle, ServicesStyle, ServicesLayout, FAQLayout, ProcessLayout, AboutLayout } from "@/lib/themes";
+import { themes, CardStyle, ImageStyle, ButtonStyle, SectionSpacing, HeroStyle, HeroLayout, GalleryStyle, ServicesStyle, ServicesLayout, FAQLayout, ProcessLayout, AboutLayout, NavLogoMode } from "@/lib/themes";
 import { fontPairings } from "@/lib/fontPairings";
 import { colorSchemes } from "@/lib/colorSchemes";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -83,6 +83,11 @@ const aboutLayoutOptions: { value: AboutLayout; label: string }[] = [
   { value: "full-width", label: "Full Width" },
 ];
 
+const navLogoOptions: { value: NavLogoMode; label: string }[] = [
+  { value: "text", label: "Text" },
+  { value: "logo", label: "Logo" },
+];
+
 function StyleRow<T extends string>({
   label, options, value, onChange,
 }: {
@@ -126,7 +131,7 @@ export function ThemeSwitcher() {
   const [open, setOpen] = useState(false);
   const {
     themeId, setThemeId,
-    cardStyle, imageStyle, buttonStyle, sectionSpacing, heroStyle, heroLayout, galleryStyle, servicesStyle, servicesLayout, faqLayout, processLayout, aboutLayout,
+    cardStyle, imageStyle, buttonStyle, sectionSpacing, heroStyle, heroLayout, galleryStyle, servicesStyle, servicesLayout, faqLayout, processLayout, aboutLayout, navLogoMode,
     overrides, setOverrides,
     fontPairingId, setFontPairingId,
     colorSchemeId, setColorSchemeId,
@@ -218,6 +223,7 @@ export function ThemeSwitcher() {
             <StyleRow label="Images" options={imageOptions} value={imageStyle} onChange={(v) => setOverrides({ ...overrides, imageStyle: v })} />
             <StyleRow label="Buttons" options={buttonOptions} value={buttonStyle} onChange={(v) => setOverrides({ ...overrides, buttonStyle: v })} />
             <StyleRow label="Spacing" options={spacingOptions} value={sectionSpacing} onChange={(v) => setOverrides({ ...overrides, sectionSpacing: v })} />
+            <StyleRow label="Nav Logo" options={navLogoOptions} value={navLogoMode} onChange={(v) => setOverrides({ ...overrides, navLogoMode: v })} />
           </div>
 
           <div className="h-px bg-border mb-4" />
