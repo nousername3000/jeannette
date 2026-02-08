@@ -1,4 +1,5 @@
 import heroBg from "@/assets/hero-bg.jpg";
+import heroCompactBg from "@/assets/hero-compact-bg.jpg";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getButtonClasses, getOutlineButtonClasses } from "@/lib/themeStyles";
 import type { HeroStyle, HeroLayout } from "@/lib/themes";
@@ -149,6 +150,15 @@ function HeroImage() {
   );
 }
 
+function HeroCompactImage() {
+  return (
+    <div className="absolute inset-0">
+      <img src={heroCompactBg} alt="" className="w-full h-full object-cover" loading="eager" />
+      <div className="absolute inset-0 bg-background/60" />
+    </div>
+  );
+}
+
 function HeroAnimated() {
   return (
     <div className="absolute inset-0 overflow-hidden">
@@ -184,7 +194,7 @@ export function Hero({ variant }: { variant?: HeroStyle }) {
 
   return (
     <section className={`relative ${isCompact ? "" : "min-h-screen"} flex items-center justify-center overflow-hidden`}>
-      {isCompact ? <HeroImage /> : <Background />}
+      {isCompact ? <HeroCompactImage /> : <Background />}
       <Layout buttonStyle={buttonStyle} />
     </section>
   );
