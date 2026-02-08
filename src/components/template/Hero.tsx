@@ -1,5 +1,6 @@
 import heroBg from "@/assets/hero-bg.jpg";
 import heroCompactBg from "@/assets/hero-compact-bg.jpg";
+import heroSplitPhoto from "@/assets/hero-split-photo.png";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getButtonClasses, getOutlineButtonClasses } from "@/lib/themeStyles";
 import type { HeroStyle, HeroLayout } from "@/lib/themes";
@@ -69,7 +70,7 @@ function LayoutSplit({ buttonStyle }: { buttonStyle: string }) {
       </div>
       <div className="hidden md:flex justify-center">
         <div className="w-80 h-80 rounded-[var(--radius)] overflow-hidden shadow-theme-lg">
-          <img src={heroBg} alt="" className="w-full h-full object-cover" />
+          <img src={heroSplitPhoto} alt="Jeannette Kühnel" className="w-full h-full object-cover" />
         </div>
       </div>
     </div>
