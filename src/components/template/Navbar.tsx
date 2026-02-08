@@ -32,10 +32,10 @@ export function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <div className="mx-auto max-w-6xl flex items-center justify-between px-6 py-4">
+      <div className="mx-auto max-w-6xl flex items-center justify-between px-6 py-5">
         <a href="#" className="flex items-center">
           {navLogoMode === "logo" ? (
-            <img src={logoPlaceholder} alt="Logo" className="h-8 w-auto" />
+            <img src={logoPlaceholder} alt="Logo" className="h-12 w-auto" />
           ) : (
             <span className="font-display text-xl font-bold text-foreground">Sarah Mitchell</span>
           )}
