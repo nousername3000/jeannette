@@ -50,9 +50,18 @@ const ThemeContext = createContext<ThemeContextValue | null>(null);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [themeId, setThemeIdState] = useState("warm");
-  const [overrides, setOverrides] = useState<StyleOverrides>({});
+  const [overrides, setOverrides] = useState<StyleOverrides>({
+    heroLayout: "split",
+    navLogoMode: "logo",
+    servicesStyle: "with-images",
+    servicesLayout: "overlay",
+    processLayout: "minimal",
+    faqLayout: "flat",
+    galleryStyle: "grid",
+    aboutLayout: "split",
+  });
   const [fontPairingId, setFontPairingId] = useState("playfair-dm");
-  const [colorSchemeId, setColorSchemeId] = useState("terracotta");
+  const [colorSchemeId, setColorSchemeId] = useState("burgundy-cream");
   const theme = themes.find((t) => t.id === themeId) ?? themes[0];
   const fontPairing = fontPairings.find((f) => f.id === fontPairingId) ?? fontPairings[0];
   const colorScheme = colorSchemes.find((c) => c.id === colorSchemeId) ?? colorSchemes[0];
