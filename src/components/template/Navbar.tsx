@@ -5,12 +5,12 @@ import { getButtonClasses } from "@/lib/themeStyles";
 import logoPlaceholder from "@/assets/logo-placeholder.svg";
 
 const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Process", href: "#process" },
-  { label: "Gallery", href: "#gallery" },
+  { label: "Über mich", href: "#about" },
+  { label: "Angebote", href: "#services" },
+  { label: "Ablauf", href: "#process" },
+  { label: "Galerie", href: "#gallery" },
   { label: "FAQ", href: "#faq" },
-  { label: "Contact", href: "#contact" },
+  { label: "Kontakt", href: "#contact" },
 ];
 
 export function Navbar() {
@@ -37,7 +37,7 @@ export function Navbar() {
           {navLogoMode === "logo" ? (
             <img src={logoPlaceholder} alt="Logo" className="h-12 w-auto" />
           ) : (
-            <span className="font-display text-xl font-bold text-foreground">Sarah Mitchell</span>
+            <span className="font-display text-xl font-bold text-foreground">Jeannette Kühnel</span>
           )}
         </a>
 
@@ -56,7 +56,7 @@ export function Navbar() {
             href="#contact"
             className={`inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium ${getButtonClasses(buttonStyle)}`}
           >
-            Book a Session
+            Erstgespräch buchen
           </a>
         </div>
 
@@ -88,7 +88,7 @@ export function Navbar() {
             onClick={() => setMobileOpen(false)}
             className={`mt-2 block text-center px-5 py-2.5 text-sm font-medium ${getButtonClasses(buttonStyle)}`}
           >
-            Book a Session
+            Erstgespräch buchen
           </a>
         </div>
       )}

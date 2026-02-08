@@ -1,6 +1,6 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useTheme } from "@/contexts/ThemeContext";
-import { Brain, Moon, Shield, Sparkles, Flame, Leaf } from "lucide-react";
+import { BookOpen, Users, Brain, Sparkles, Heart, Shield } from "lucide-react";
 import { getCardClasses, getCardHoverClasses, getIconContainerClasses, getSectionPadding, getImageClasses } from "@/lib/themeStyles";
 import type { ServicesLayout } from "@/lib/themes";
 
@@ -21,39 +21,39 @@ interface ServiceItem {
 
 const services: ServiceItem[] = [
   {
-    icon: Shield,
-    title: "Anxiety Relief",
-    description: "Release deep-seated anxiety and develop lasting inner calm through targeted subconscious techniques.",
+    icon: BookOpen,
+    title: "Lerntherapie",
+    description: "Individuelle Förderung bei Lese-Rechtschreibstörung (Legasthenie) und Rechenstörung (Dyskalkulie) — Schritt für Schritt zum Erfolg.",
     image: anxietyImg,
   },
   {
-    icon: Brain,
-    title: "Stress Management",
-    description: "Rewire your stress response and build resilience with evidence-based hypnotic strategies.",
+    icon: Users,
+    title: "Familienberatung",
+    description: "Systemische Beratung für Familien, die unter Schulstress und Konflikten rund ums Lernen leiden.",
     image: stressImg,
   },
   {
-    icon: Moon,
-    title: "Sleep Improvement",
-    description: "Overcome insomnia and restless nights by training your mind for deep, restorative sleep.",
+    icon: Brain,
+    title: "Lese- & Schreibförderung",
+    description: "Dein Kind wird Schritt für Schritt zum sicheren Schreiber und Leser — ganz ohne Stress, Streit und Tränen.",
     image: sleepImg,
   },
   {
     icon: Sparkles,
-    title: "Confidence Building",
-    description: "Unlock your true potential by dissolving self-doubt and amplifying your inner strength.",
+    title: "Selbstbewusstsein stärken",
+    description: "Kinder, die sich für dumm halten, brauchen Erfolgserlebnisse. Ich schaffe den Rahmen dafür.",
     image: confidenceImg,
   },
   {
-    icon: Flame,
-    title: "Smoking Cessation",
-    description: "Break free from smoking with a proven hypnotherapy protocol — most clients quit in 1–3 sessions.",
+    icon: Heart,
+    title: "Schulangst & Schulphobie",
+    description: "Bauchschmerzen, Heulattacken, Verweigerung — gemeinsam finden wir Wege zurück in ein entspanntes Schulleben.",
     image: smokingImg,
   },
   {
-    icon: Leaf,
-    title: "Weight Management",
-    description: "Transform your relationship with food through mindful, subconscious reprogramming.",
+    icon: Shield,
+    title: "Elterncoaching",
+    description: "Du lernst, WAS dein Kind braucht und WIE du es als Lernbegleitung kompetent unterstützen kannst.",
     image: weightImg,
   },
 ];
@@ -68,14 +68,14 @@ export function Services() {
       <div ref={ref} className={`mx-auto max-w-6xl px-6 ${revealed ? "revealed" : ""}`}>
         <div className="text-center mb-16 reveal">
           <p className="text-sm font-medium uppercase tracking-[0.15em] text-primary mb-3">
-            Services
+            Angebote
           </p>
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-            How I Can Help You
+            Wie ich Euch helfen kann
           </h2>
           <p className="mx-auto max-w-2xl text-muted-foreground">
-            Every journey is unique. I offer a range of specialised
-            hypnotherapy services tailored to your individual needs.
+            Jede Familie ist einzigartig. Ich biete verschiedene Unterstützungsmöglichkeiten,
+            die genau auf Eure Situation zugeschnitten sind.
           </p>
         </div>
 
@@ -191,9 +191,7 @@ function MinimalLayout({ services, showImages, cardStyle, imageStyle }: LayoutPr
           )}
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-1">
-              {showImages && (
-                <service.icon className="w-4 h-4 text-primary shrink-0" />
-              )}
+              {showImages && <service.icon className="w-4 h-4 text-primary shrink-0" />}
               <h3 className="font-display text-lg font-semibold text-card-foreground">{service.title}</h3>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">{service.description}</p>

@@ -5,14 +5,14 @@ import { getCardClasses, getCardHoverClasses, getImageClasses, getSectionPadding
 import type { AboutLayout } from "@/lib/themes";
 
 const credentials = [
-  { icon: GraduationCap, text: "MSc Clinical Hypnotherapy" },
-  { icon: Award, text: "15+ Years Experience" },
-  { icon: Heart, text: "2,000+ Lives Changed" },
+  { icon: GraduationCap, text: "Lehrerin & Lerntherapeutin" },
+  { icon: Award, text: "20+ Jahre Erfahrung" },
+  { icon: Heart, text: "Hunderte Familien begleitet" },
 ];
 
-const bioShort = "I'm Sarah Mitchell, and I believe that every person holds the power to heal within themselves.";
-const bioLong = "As a certified clinical hypnotherapist, I've spent over 15 years guiding individuals through gentle, evidence-based techniques that unlock their subconscious potential.";
-const bioApproach = "My approach combines traditional hypnotherapy with modern neuroscience, creating a warm and supportive environment where real change happens — naturally and comfortably.";
+const bioShort = "Ich bin Jeannette und begleite seit über 20 Jahren Familien und ihre Kinder aus der Schreibverweigerung und Lernblockade heraus.";
+const bioLong = "Früher als Lehrerin, heute als Lerntherapeutin und Systemische Beraterin — ich weiß aus eigener Erfahrung, wie es sich anfühlt, in der Schule nicht mitzukommen.";
+const bioApproach = "Mein Ansatz verbindet pädagogisches Fachwissen mit systemischer Beratung und einem tiefen Verständnis für die emotionale Belastung, die Schulprobleme in der ganzen Familie auslösen können.";
 
 export function About() {
   const { ref, revealed } = useScrollReveal();
@@ -37,18 +37,16 @@ function AboutContent({ layout, imageStyle, cardStyle }: { layout: AboutLayout; 
   }
 }
 
-/* ── Shared: Avatar placeholder ── */
 function Avatar({ className = "w-72 h-72 md:w-80 md:h-80", imageStyle }: { className?: string; imageStyle?: string }) {
   return (
     <div className={`${className} bg-secondary shadow-theme-lg ${imageStyle ? getImageClasses(imageStyle as any) : "rounded-[var(--radius)]"}`}>
       <div className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-        <span className="font-display text-6xl text-primary/40">SM</span>
+        <span className="font-display text-6xl text-primary/40">JK</span>
       </div>
     </div>
   );
 }
 
-/* ── Shared: Credential badges ── */
 function Credentials() {
   return (
     <div className="flex flex-wrap gap-6">
@@ -62,7 +60,6 @@ function Credentials() {
   );
 }
 
-/* ── Layout 1: Split (original — image left, text right) ── */
 function SplitLayout({ imageStyle }: { imageStyle: string }) {
   return (
     <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center reveal">
@@ -73,8 +70,8 @@ function SplitLayout({ imageStyle }: { imageStyle: string }) {
         </div>
       </div>
       <div>
-        <p className="text-sm font-medium uppercase tracking-[0.15em] text-primary mb-3">About Me</p>
-        <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">A Safe Space for Transformation</h2>
+        <p className="text-sm font-medium uppercase tracking-[0.15em] text-primary mb-3">Über mich</p>
+        <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">Mit Herz und Erfahrung für Eure Familie</h2>
         <p className="text-muted-foreground leading-relaxed mb-4">{bioShort} {bioLong}</p>
         <p className="text-muted-foreground leading-relaxed mb-8">{bioApproach}</p>
         <Credentials />
@@ -83,15 +80,14 @@ function SplitLayout({ imageStyle }: { imageStyle: string }) {
   );
 }
 
-/* ── Layout 2: Centered (image on top, text centered below) ── */
 function CenteredLayout({ imageStyle }: { imageStyle: string }) {
   return (
     <div className="text-center reveal">
       <div className="flex justify-center mb-8">
         <Avatar className="w-40 h-40 md:w-48 md:h-48" imageStyle={imageStyle} />
       </div>
-      <p className="text-sm font-medium uppercase tracking-[0.15em] text-primary mb-3">About Me</p>
-      <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">A Safe Space for Transformation</h2>
+      <p className="text-sm font-medium uppercase tracking-[0.15em] text-primary mb-3">Über mich</p>
+      <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">Mit Herz und Erfahrung für Eure Familie</h2>
       <p className="mx-auto max-w-2xl text-muted-foreground leading-relaxed mb-4">{bioShort} {bioLong}</p>
       <p className="mx-auto max-w-2xl text-muted-foreground leading-relaxed mb-8">{bioApproach}</p>
       <div className="flex justify-center">
@@ -101,13 +97,12 @@ function CenteredLayout({ imageStyle }: { imageStyle: string }) {
   );
 }
 
-/* ── Layout 3: Cards (credentials as separate styled cards) ── */
 function CardsLayout({ cardStyle }: { cardStyle: string }) {
   return (
     <div className="reveal">
       <div className="text-center mb-12">
-        <p className="text-sm font-medium uppercase tracking-[0.15em] text-primary mb-3">About Me</p>
-        <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">A Safe Space for Transformation</h2>
+        <p className="text-sm font-medium uppercase tracking-[0.15em] text-primary mb-3">Über mich</p>
+        <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">Mit Herz und Erfahrung für Eure Familie</h2>
         <p className="mx-auto max-w-2xl text-muted-foreground leading-relaxed">{bioShort} {bioLong}</p>
       </div>
       <div className="grid sm:grid-cols-3 gap-6">
@@ -124,13 +119,12 @@ function CardsLayout({ cardStyle }: { cardStyle: string }) {
   );
 }
 
-/* ── Layout 4: Full-width (background gradient, dramatic) ── */
 function FullWidthLayout() {
   return (
     <div className="reveal -mx-6 px-6 py-16 md:py-20 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 rounded-[var(--radius)]">
       <div className="max-w-3xl mx-auto">
-        <p className="text-sm font-medium uppercase tracking-[0.15em] text-primary mb-3">About Me</p>
-        <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-8">A Safe Space for Transformation</h2>
+        <p className="text-sm font-medium uppercase tracking-[0.15em] text-primary mb-3">Über mich</p>
+        <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-8">Mit Herz und Erfahrung für Eure Familie</h2>
         <blockquote className="border-l-4 border-primary pl-6 mb-8">
           <p className="text-lg text-foreground leading-relaxed italic">{bioShort}</p>
         </blockquote>
